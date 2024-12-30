@@ -16,3 +16,47 @@ Perfume que a pessoa não gosta: também deve escrever
 
 https://search.app/g93oMv1a7gfmcJ7m7
 https://search.app/PmBKdzfMYa9a5TjF6
+
+1. Ocasião de Uso
+Pergunta: Em qual ocasião você pretende usar o perfume?
+Opções:
+
+Festa
+Jantar
+Praia
+Aniversário
+Dia a dia
+Trabalho
+Ocasião especial
+2. Período de Uso
+Pergunta: Quando você pretende usar o perfume?
+Opções:
+
+Durante o dia
+À tarde
+À noite
+3. Clima
+Pergunta: Em qual clima você prefere usar seu perfume?
+Opções:
+
+Quente
+Frio
+4. Sexo
+Pergunta: Qual é o seu sexo?
+Opções:
+
+Masculino
+Feminino
+Unissex
+5. Sentimento que Você Quer Transmitir
+Pergunta: Qual sentimento você gostaria de transmitir com o seu perfume?
+Opções:
+
+Confiança
+Poder
+Respeito
+Conhecimento
+Outros (campo para preenchimento)
+6. Perfume que Você Gosta
+Pergunta: Qual é o perfume que você mais gosta?
+Resposta: Campo para preenchimento (a pessoa pode escrever o nome do perfume).
