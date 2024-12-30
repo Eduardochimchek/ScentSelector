@@ -1,0 +1,235 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+    overflow: auto;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('./imagens/fundoEstrelado.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.quiz-container {
+    margin: auto;
+    text-align: center;
+    background: rgb(0 0 0 / 60%);
+    border-radius: 12px;
+    padding: 20px;
+    width: 90%;
+    z-index: 2;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    flex-grow: 0.6; /* Faz o quiz-container crescer para ocupar o espaço disponível */
+    margin-bottom: 20px; /* Adiciona margem inferior no desktop */
+}
+
+.quiz-header {
+    margin-bottom: 20px;
+}
+
+.quiz-header h1 {
+    font-size: 2em;
+    margin: 0;
+    background: linear-gradient(90deg, #B7DEE5 0%, #030303 117.33%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.quiz-header p {
+    color: #b0c6cf;
+    margin-top: 10px;
+}
+
+.question {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.option {
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 2;
+    background: linear-gradient(224.9deg, #DAF9FF -2.36%, #004D5A 95.93%), #242424;
+}
+
+.option:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+}
+
+.result {
+    display: none;
+    text-align: center;
+}
+
+.result h2 {
+    color: #d1efff;
+}
+
+.restart {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #000000, #2d626d00);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+    z-index: 2;
+    border: 1px solid white;
+}
+
+.restart:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+}
+
+.footer {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    z-index: 2;
+    width: 100%;
+    padding: 10px 0;
+    background: rgba(0, 0, 0, 0.8);
+    position: relative; /* Muda para 'relative' no mobile */
+    bottom: 0;
+}
+
+.footer img {
+    max-height: 50px;
+    object-fit: contain;
+}
+
+/* Responsividade */
+.ellipse {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    left: calc(50% - 125px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(330.23deg, #32E0FF 10.36%, #DAF9FF 85.22%);
+    mix-blend-mode: screen;
+    filter: blur(88.9px);
+    z-index: 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .quiz-container {
+        padding: 15px;
+        margin-bottom: 80px;
+    }
+
+    .quiz-header h1 {
+        font-size: 1.8em;
+    }
+
+    .question {
+        font-size: 1em;
+    }
+
+    .options {
+        gap: 10px;
+    }
+
+    .option {
+        font-size: 0.9em;
+        padding: 10px 18px;
+    }
+
+    .footer img {
+        max-height: 40px;
+    }
+
+    .ellipse {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quiz-container {
+        width: 90%;
+    }
+
+    .quiz-header h1 {
+        font-size: 1.5em;
+    }
+
+    .question {
+        font-size: 0.9em;
+    }
+
+    .option {
+        font-size: 0.8em;
+        padding: 10px 15px;
+    }
+
+    .footer {
+        flex-direction: column; /* Colocando as logos uma embaixo da outra */
+        gap: 10px; /* Diminui o espaço entre as logos */
+    }
+
+    .footer img {
+        max-height: 30px; /* Reduzindo o tamanho das imagens no mobile */
+    }
+
+    .ellipse {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 425px) {
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .quiz-container {
+        padding: 15px;
+        margin-bottom: 10px; /* Adiciona espaço para o footer no mobile */
+    }
+
+    .footer {
+        position: relative; /* Não será fixo */
+        padding-bottom: 10px; /* Espaço entre o conteúdo e o footer */
+    }
+}
+
+@media (max-width: 320px) {
+    .quiz-container {
+        margin: 10px 5%; /* Garante margem lateral mínima */
+        padding: 10px; /* Ajusta o padding para telas muito pequenas */
+    }
+}  
