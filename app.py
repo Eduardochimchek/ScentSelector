@@ -1,47 +1,63 @@
 from flask import Flask, request, jsonify
 import pickle
-from flask_cors import CORS  # Importando o CORS
+import pandas as pd
 
 app = Flask(__name__)
-CORS(app)  # Ativando o CORS
 
-# Carregar o modelo previamente treinado
-with open('model/perfume_predictor_model.pkl', 'rb') as model_file:
-    model = pickle.load(model_file)
+# Carregar o modelo e os encoders
+with open('model/modelo_random_forest.pkl', 'rb') as f:
+    model = pickle.load(f)
 
-@app.route('/predict', methods=['POST'])
-def predict():
-    try:
-        # Receber as respostas como JSON
-        data = request.get_json()
+with open('model/intensidade_encoder.pkl', 'rb') as f:
+    intensidade_encoder = pickle.load(f)
 
-        if not data:
-            return jsonify({'error': 'Erro ao processar o JSON'}), 400
+with open('model/label_encoder.pkl', 'rb') as f:
+    label_encoder = pickle.load(f)
 
-        answers = data.get('answers')
+# Função para codificar a entrada
+def codificar_entrada(entrada, encoder):
+    if entrada in encoder.classes_:
+        return encoder.transform([entrada])[0]
+    else:
+        return encoder.transform([encoder.classes_[0]])[0]
 
-        if not answers:
-            return jsonify({'error': 'Respostas não recebidas'}), 400
-
-        # Extrair as respostas do JSON
-        clima = answers.get('clima')
-        fragrancia = answers.get('fragrancia')
-        perfume_intensidade = answers.get('perfume_intensidade')
-
-        # A parte crucial: Prepare as variáveis de entrada para o modelo
-        input_data = [clima, fragrancia, perfume_intensidade]
-
-        # Aqui você pode codificar os dados ou transformá-los para o formato que seu modelo espera
-        # Como o modelo foi treinado com variáveis categóricas codificadas, você deve fazer isso da mesma maneira.
-
-        # Exemplo de como fazer a previsão
-        prediction = model.predict([input_data])  # A previsão do modelo
-
-        # Retornar o nome do perfume previsto
-        return jsonify({'result': prediction[0]})
+# Função para prever a intensidade e o nome do perfume
+def prever_intensidade_nome_perfume(ocasião, periodo, clima, sexo, sentimento, notas, estilo, faixa_etaria):
+    codificado = [
+        codificar_entrada(ocasião, label_encoder),
+        codificar_entrada(periodo, label_encoder),
+        codificar_entrada(clima, label_encoder),
+        codificar_entrada(sexo, label_encoder),
+        codificar_entrada(sentimento, label_encoder),
+        codificar_entrada(notas, label_encoder),
+        codificar_entrada(estilo, label_encoder),
+        codificar_entrada(faixa_etaria, label_encoder)
+    ]
     
-    except Exception as e:
-        return jsonify({'error': f'Erro interno: {str(e)}'}), 500
+    dados_entrada = pd.DataFrame([codificado], columns=['Ocasião de Uso', 'Período de Uso', 'Clima', 'Sexo', 'Sentimento', 'Notas Olfativas', 'Estilo', 'Faixa Etária'])
+
+    previsao_intensidade = model.predict(dados_entrada)
+    intensidade = intensidade_encoder.inverse_transform(previsao_intensidade)
+    
+    return intensidade[0]
+
+# Rota para receber dados de entrada e devolver a previsão
+@app.route('/prever', methods=['POST'])
+def prever():
+    data = request.json
+    ocasião = data.get('ocasião')
+    periodo = data.get('periodo')
+    clima = data.get('clima')
+    sexo = data.get('sexo')
+    sentimento = data.get('sentimento')
+    notas = data.get('notas')
+    estilo = data.get('estilo')
+    faixa_etaria = data.get('faixa_etaria')
+
+    # Chamar a função de previsão
+    intensidade_prevista = prever_intensidade_nome_perfume(ocasião, periodo, clima, sexo, sentimento, notas, estilo, faixa_etaria)
+    
+    return jsonify({"intensidade": intensidade_prevista})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)  # Certifique-se de que o Flask está rodando na porta 5000
+    app.run(debug=True)

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="ISO-88591">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfume Quizz Demo</title>
     <link rel="stylesheet" href="index.css">
@@ -15,7 +15,7 @@
         </div>
 
         <!-- Pergunta 1 -->
-        <div class="quiz" style="display:none;">
+        <div class="quiz" style="display:block;">
             <div class="question">Qual é o seu clima favorito?</div>
             <div class="options">
                 <button class="option" data-score="1">Verão</button>
@@ -47,9 +47,9 @@
 
         <!-- Resultado -->
         <div class="result" style="display:none;">
-            <h2>Resultado: Floral Suave</h2>
-            <p>Você prefere fragrâncias leves e refrescantes, ideais para qualquer ocasião.</p>
-            <button class="restart">Refazer o Quiz</button>
+            <h2>Resultado: </h2>
+            <p id="resultText"></p>
+            <button class="restart" onclick="restartQuiz()">Refazer o Quiz</button>
         </div>
     </div>
 
