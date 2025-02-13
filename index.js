@@ -1,108 +1,90 @@
-// Variáveis de controle
-let currentQuestionIndex = 0;  // Índice da pergunta atual
-const quizQuestions = document.querySelectorAll('.question-container');  // Todos os containers de perguntas
-const resultSection = document.querySelector('.result');  // Seção do resultado
-const resultText = document.getElementById('resultText');  // Texto do resultado
-let answers = {};  // Objeto para armazenar as respostas
+const telas = document.querySelectorAll('.tela');
+let indiceAtual = 0;
 
-// Função para mostrar a próxima pergunta
-function showNextQuestion() {
-    if (quizQuestions[currentQuestionIndex]) {
-        // Esconde a pergunta atual
-        quizQuestions[currentQuestionIndex].style.display = 'none';
+const thumb = document.getElementById("thumb");
+const slider = document.getElementById("slider");
 
-        // Verifica se ainda existem mais perguntas
-        if (currentQuestionIndex < quizQuestions.length - 1) {
-            currentQuestionIndex++;  // Avança para a próxima pergunta
-            // Exibe a próxima pergunta
-            if (quizQuestions[currentQuestionIndex]) {
-                quizQuestions[currentQuestionIndex].style.display = 'block';
-            }
-        } else {
-            enviarRespostasParaFlask();  // Envia as respostas para o Flask quando terminar
-        }
-    } else {
-        console.error('Erro: Pergunta não encontrada!');
+let dragging = false;
+
+
+const fundos = [
+    './imagens/fundo_pg_principal.png',  // Tela 1
+    './imagens/fundo_pg_idade.png',         // Tela 2
+    './imagens/fundo_pg_oca_uso.png',         // Tela 3
+    './imagens/fundo_tela4.png',         // Tela 4
+    './imagens/fundo_tela5.png',         // Tela 5
+    './imagens/fundo_tela6.png',         // Tela 6
+    './imagens/fundo_tela7.png',         // Tela 7
+    './imagens/fundo_tela8.png',         // Tela 8
+    './imagens/fundo_tela9.png'          // Tela 9
+];
+
+function atualizarTela() {
+    // Remove a classe 'ativo' de todas as telas
+    telas.forEach(tela => tela.classList.remove('ativo'));
+
+    // Adiciona a classe 'ativo' na tela atual
+    telas[indiceAtual].classList.add('ativo');
+
+    // Altera o fundo conforme a tela atual
+    document.body.style.backgroundImage = `url('${fundos[indiceAtual]}')`;
+}
+
+function avancar() {
+    if (indiceAtual < telas.length - 1) {
+        indiceAtual++;
+        atualizarTela();
     }
 }
 
-// Função para enviar as respostas para o Flask
-function enviarRespostasParaFlask() {
-    fetch('/predict', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ answers })  // Envia as respostas como JSON
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.error) {
-            resultText.textContent = `Erro: ${data.error}`;
-        } else {
-            resultText.textContent = `Perfume: ${data.perfume} | Intensidade: ${data.intensidade}`;
-        }
-        resultSection.style.display = 'block';  // Exibe a seção de resultado
-    })
-    .catch(error => {
-        console.error("Erro ao comunicar com o backend", error);
-        resultText.textContent = "Erro ao comunicar com o backend.";
-        resultSection.style.display = 'block';  // Exibe a seção de erro
-    });
-}
-
-// Função para capturar a resposta e atualizar o objeto 'answers'
-function capturarResposta(pergunta, resposta) {
-    if (pergunta.includes("ocasião")) {
-        answers['ocasião'] = resposta;
-    } else if (pergunta.includes("período")) {
-        answers['periodo'] = resposta;
-    } else if (pergunta.includes("clima")) {
-        answers['clima'] = resposta;
-    } else if (pergunta.includes("sexo")) {
-        answers['sexo'] = resposta;
-    } else if (pergunta.includes("sentimento")) {
-        answers['sentimento'] = resposta;
-    } else if (pergunta.includes("notas")) {
-        answers['notas'] = resposta;
-    } else if (pergunta.includes("estilo")) {
-        answers['estilo'] = resposta;
-    } else if (pergunta.includes("faixa etária")) {
-        answers['faixa_etaria'] = resposta;
+function voltar() {
+    if (indiceAtual > 0) {
+        indiceAtual--;
+        atualizarTela();
     }
 }
 
-// Evento de clique para as opções
-document.querySelectorAll('.option').forEach(option => {
-    option.addEventListener('click', (event) => {
-        const answer = event.target.dataset.answer;  // Obtém a resposta da opção clicada
-        const questionText = event.target.closest('.question-container').querySelector('.question')?.textContent;  // Obtém o texto da pergunta, com verificação
+document.body.style.backgroundImage = `url('${fundos[indiceAtual]}')`;
 
-        // Verifique se o questionText existe
-        if (questionText) {
-            // Armazena as respostas
-            capturarResposta(questionText, answer);
+// Função para manipular o movimento do mouse ou toque
+function onMove(e) {
+    if (!dragging) return;
 
-            // Exibe a próxima pergunta após clicar
-            showNextQuestion();
-        } else {
-            console.error("Erro: Não foi possível encontrar o texto da pergunta.");
-        }
+    const sliderRect = slider.getBoundingClientRect();
+    let newLeft;
+
+    if (e.type === "mousemove") {
+        newLeft = e.clientX - sliderRect.left;
+    } else if (e.type === "touchmove") {
+        newLeft = e.touches[0].clientX - sliderRect.left;
+    }
+
+    // Limitar entre 0 e a largura do slider
+    newLeft = Math.max(0, Math.min(newLeft, sliderRect.width));
+
+    // Converter posição em idade (0 a 100)
+    const age = Math.round((newLeft / sliderRect.width) * 100);
+
+    // Aplicar posição e atualizar valor
+    thumb.style.left = `${(age / 100) * 100}%`;
+    thumb.textContent = age;
+}
+
+thumb.addEventListener("mousedown", (e) => {
+    dragging = true;
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseup", () => {
+        dragging = false;
+        document.removeEventListener("mousemove", onMove);
     });
 });
 
-// Função para reiniciar o quiz
-function restartQuiz() {
-    answers = {};  // Limpa as respostas
-    currentQuestionIndex = 0;  // Reseta o índice da pergunta
-    quizQuestions.forEach(q => q.style.display = 'none');  // Esconde todas as perguntas
-    if (quizQuestions[0]) {
-        quizQuestions[0].style.display = 'block';  // Exibe a primeira pergunta
-    }
-    resultSection.style.display = 'none';  // Esconde o resultado
-}
-
-// Exibe a primeira pergunta inicialmente
-if (quizQuestions[0]) {
-    quizQuestions[0].style.display = 'block';
-}
+// Suporte para toque em dispositivos móveis
+thumb.addEventListener("touchstart", (e) => {
+    dragging = true;
+    document.addEventListener("touchmove", onMove);
+    document.addEventListener("touchend", () => {
+        dragging = false;
+        document.removeEventListener("touchmove", onMove);
+    });
+});

@@ -1,235 +1,198 @@
+/* ConfiguraÃ§Ã£o geral do corpo */
 body {
+    font-family: Arial, sans-serif;
+    text-align: center;
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: #000;
-    color: #fff;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    min-height: 100vh;
-    overflow: auto;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: black;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background 0.5s ease-in-out;
+    /* Suaviza a troca de fundo */
+    overflow: hidden;
 }
 
-body::before {
-    content: "";
+/* Container principal */
+#container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* ConfiguraÃ§Ã£o das telas */
+.tela {
+    display: none;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    height: 100%;
+    position: relative;
+}
+
+/* Tela ativa */
+.ativo {
+    display: block;
+}
+
+/* Ajuste para imagens responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Texto responsivo */
+.texto {
+    font-size: 5vw;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+/* ContÃªiner dos botÃµes */
+.botao-container {
     position: absolute;
-    top: 0;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+}
+
+/* BotÃµes */
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    background: #A0F0FF;
+    color: black;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+/* Efeito hover nos botÃµes */
+button:hover {
+    background: #89d8e7;
+    transform: scale(1.05);
+}
+
+/* Efeito ao clicar */
+button:active {
+    transform: scale(0.95);
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 12px;
+    background: white;
+    border-radius: 6px;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.slider-line {
+    position: absolute;
+    top: 50%;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: url('./imagens/fundoEstrelado.png') no-repeat center center;
-    background-size: cover;
-    opacity: 0.3;
-    z-index: 1;
+    height: 12px;
+    background: white;
+    border-radius: 6px;
 }
 
-.quiz-container {
-    margin: auto;
-    text-align: center;
-    background: rgb(0 0 0 / 60%);
-    border-radius: 12px;
-    padding: 20px;
-    width: 90%;
-    z-index: 2;
-    max-width: 500px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-    flex-grow: 0.6; /* Faz o quiz-container crescer para ocupar o espaço disponível */
-    margin-bottom: 20px; /* Adiciona margem inferior no desktop */
+.slider-thumb {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: #A0F0FF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    cursor: grab;
+    box-shadow: 0px 0px 10px rgb(255 255 255);
+    transition: box-shadow 0.3s ease-in-out;
+    user-select: none;
 }
 
-.quiz-header {
-    margin-bottom: 20px;
-}
-
-.quiz-header h1 {
-    font-size: 2em;
-    margin: 0;
-    background: linear-gradient(90deg, #B7DEE5 0%, #030303 117.33%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-.quiz-header p {
-    color: #b0c6cf;
+.slider-numbers {
+    display: flex;
+    justify-content: space-between;
     margin-top: 10px;
 }
 
-.question {
-    font-size: 1.2em;
-    margin: 20px 0;
+.slider-numbers span {
+    font-size: 14px;
 }
 
-.options {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.option {
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    z-index: 2;
-    background: linear-gradient(224.9deg, #DAF9FF -2.36%, #004D5A 95.93%), #242424;
-}
-
-.option:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-}
-
-.result {
-    display: none;
-    text-align: center;
-}
-
-.result h2 {
-    color: #d1efff;
-}
-
-.restart {
-    margin-top: 20px;
-    background: linear-gradient(135deg, #000000, #2d626d00);
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s;
-    position: relative;
-    z-index: 2;
-    border: 1px solid white;
-}
-
-.restart:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-}
-
-.footer {
-    display: flex;
-    gap: 15px;
+.opcOCUSO {
+    width: 180px;
+    height: 20px;
+    padding-left: 37px;
+    padding-right: 37px;
+    padding-top: 19px;
+    padding-bottom: 19px;
+    border-radius: 68.66px;
+    border: 0.79px white solid;
     justify-content: center;
-    flex-wrap: wrap;
-    z-index: 2;
-    width: 100%;
-    padding: 10px 0;
-    background: rgba(0, 0, 0, 0.8);
-    position: relative; /* Muda para 'relative' no mobile */
-    bottom: 0;
+    align-items: center;
+    gap: 13.80px;
+    display: inline-flex;
+    cursor: pointer;
 }
 
-.footer img {
-    max-height: 50px;
-    object-fit: contain;
+.opcOCUSO:hover {
+    background: linear-gradient(0deg, #AFF3FF 0%, #AFF3FF 100%), linear-gradient(0deg, #A0F0FF 0%, #A0F0FF 100%);
+    border-radius: 68.66px;
+}
+
+.opcOCUSOtext {
+    color: white;
+    font-size: 16.56px;
+    font-family: Labil Grotesk;
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+.opcOCUSO:hover .opcOCUSOtext{
+    color: black;
 }
 
 /* Responsividade */
-.ellipse {
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    left: calc(50% - 125px);
-    top: 50%;
-    transform: translateY(-50%);
-    background: linear-gradient(330.23deg, #32E0FF 10.36%, #DAF9FF 85.22%);
-    mix-blend-mode: screen;
-    filter: blur(88.9px);
-    z-index: 0;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    .quiz-container {
-        padding: 15px;
-        margin-bottom: 80px;
-    }
-
-    .quiz-header h1 {
-        font-size: 1.8em;
-    }
-
-    .question {
-        font-size: 1em;
-    }
-
-    .options {
-        gap: 10px;
-    }
-
-    .option {
-        font-size: 0.9em;
-        padding: 10px 18px;
-    }
-
-    .footer img {
-        max-height: 40px;
-    }
-
-    .ellipse {
-        width: 200px;
-        height: 200px;
-    }
-}
-
 @media (max-width: 480px) {
-    .quiz-container {
+    .slider-container {
         width: 90%;
     }
 
-    .quiz-header h1 {
-        font-size: 1.5em;
+    .slider-thumb {
+        width: 45px;
+        height: 45px;
+        font-size: 14px;
     }
 
-    .question {
-        font-size: 0.9em;
+    .texto {
+        font-size: 2em;
     }
 
-    .option {
-        font-size: 0.8em;
-        padding: 10px 15px;
-    }
-
-    .footer {
-        flex-direction: column; /* Colocando as logos uma embaixo da outra */
-        gap: 10px; /* Diminui o espaço entre as logos */
-    }
-
-    .footer img {
-        max-height: 30px; /* Reduzindo o tamanho das imagens no mobile */
-    }
-
-    .ellipse {
-        width: 180px;
-        height: 180px;
+    .slider-numbers span {
+        font-size: 12px;
     }
 }
-
-@media (max-width: 425px) {
-    body {
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-    }
-
-    .quiz-container {
-        padding: 15px;
-        margin-bottom: 10px; /* Adiciona espaço para o footer no mobile */
-    }
-
-    .footer {
-        position: relative; /* Não será fixo */
-        padding-bottom: 10px; /* Espaço entre o conteúdo e o footer */
-    }
-}
-
-@media (max-width: 320px) {
-    .quiz-container {
-        margin: 10px 5%; /* Garante margem lateral mínima */
-        padding: 10px; /* Ajusta o padding para telas muito pequenas */
-    }
-}  
