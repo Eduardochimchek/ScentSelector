@@ -44,6 +44,21 @@ function voltar() {
     }
 }
 
+function selSentimeto(element) {
+    // Remove a classe 'selected' de todos os elementos
+    document.querySelectorAll('.opcSENTIMENTO').forEach(el => el.classList.remove('selected'));
+
+    // Adiciona a classe 'selected' apenas ao elemento clicado
+    element.classList.add('selected');
+}
+
+function openWhatsApp() {
+    var phoneNumber = "556692479111"; // Coloque o número com código do país e sem espaços ou traços
+    var message = "Olá, gostaria de mais informações, fiz o quizz e meu resultado foi o Assad Lataffa!"; // Mensagem personalizada
+    var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+}
+
 document.body.style.backgroundImage = `url('${fundos[indiceAtual]}')`;
 
 // Função para manipular o movimento do mouse ou toque

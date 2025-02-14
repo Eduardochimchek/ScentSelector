@@ -275,7 +275,8 @@ button:active {
     cursor: pointer;
 }
 
-.opcSENTIMENTO:hover {
+.opcSENTIMENTO:hover,
+.opcSENTIMENTO.selected {
     background: #A0F0FF;
 }
 
@@ -287,8 +288,29 @@ button:active {
     word-wrap: break-word;
 }
 
-.opcSENTIMENTO:hover .opcSENTIMENTOtext {
+.opcSENTIMENTO:hover .opcSENTIMENTOtext,
+.opcSENTIMENTO.selected .opcSENTIMENTOtext {
     color: black;
+}
+
+.buttonWhatsapp {
+    width: 300px;
+    height: 29px;
+    padding-top: 20.04px;
+    padding-bottom: 20.04px;
+    padding-left: 34.35px;
+    padding-right: 32.86px;
+    background: #101010;
+    border-radius: 83.33px;
+    justify-content: center;
+    align-items: center;
+    gap: 27.04px;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.buttonWhatsapp:hover{
+    background: #494949;
 }
 
 /* Responsividade */
