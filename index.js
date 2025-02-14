@@ -11,8 +11,8 @@ const fundos = [
     './imagens/fundo_pg_principal.png',  // Tela 1
     './imagens/fundo_pg_idade.png',         // Tela 2
     './imagens/fundo_pg_oca_uso.png',         // Tela 3
-    './imagens/fundo_tela4.png',         // Tela 4
-    './imagens/fundo_tela5.png',         // Tela 5
+    './imagens/fundo_pg_momento.png',         // Tela 4
+    './imagens/fundo_pg_clima.png',         // Tela 5
     './imagens/fundo_tela6.png',         // Tela 6
     './imagens/fundo_tela7.png',         // Tela 7
     './imagens/fundo_tela8.png',         // Tela 8

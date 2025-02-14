@@ -172,7 +172,122 @@ button:active {
     word-wrap: break-word
 }
 
-.opcOCUSO:hover .opcOCUSOtext{
+.opcOCUSO:hover .opcOCUSOtext {
+    color: black;
+}
+
+.opcMOMENTO {
+    width: 186px;
+    height: 170px;
+    background: #EBFCFF;
+    border-radius: 24.05px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.opcMOMENTO:hover {
+    background: #AFF3FF;
+}
+
+.opcCLIMA {
+    width: 285px;
+    height: 285px;
+    border-radius: 28.73px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.opcCLIMA:hover {
+    border: 5px solid #0000006b;
+}
+
+.opcSEXO {
+    width: 254px;
+    height: 254px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.opcSEXO:hover {
+    border: 5px solid #0000006b;
+}
+
+.input_Sentimento {
+    display: flex;
+    align-items: center;
+    width: 500px;
+    background: #333;
+    border-radius: 20px;
+    height: 55px;
+    border: 1px solid white;
+    justify-content: center;
+    text-align: center;
+}
+
+.label_Sentimento {
+    background: #a8ecff;
+    padding: 10px;
+    border-radius: 20px 0 0 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-field_Sentimento {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-field_Sentimento::placeholder {
+    color: #aaa;
+}
+
+.opcSENTIMENTO {
+    width: 215px;
+    height: 8px;
+    padding-left: 40.19px;
+    padding-right: 40.19px;
+    padding-top: 20.84px;
+    padding-bottom: 20.84px;
+    border-radius: 74.06px;
+    border: 0.85px white solid;
+    justify-content: center;
+    align-items: center;
+    gap: 14.89px;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.opcSENTIMENTO:hover {
+    background: #A0F0FF;
+}
+
+.opcSENTIMENTOtext {
+    color: white;
+    font-size: 17.86px;
+    font-family: Sora;
+    font-weight: 300;
+    word-wrap: break-word;
+}
+
+.opcSENTIMENTO:hover .opcSENTIMENTOtext {
     color: black;
 }
 
