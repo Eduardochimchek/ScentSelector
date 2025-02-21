@@ -309,12 +309,32 @@ button:active {
     cursor: pointer;
 }
 
-.buttonWhatsapp:hover{
+.buttonWhatsapp:hover {
     background: #494949;
 }
 
-/* Responsividade */
-@media (max-width: 480px) {
+.tagQuiz {
+    right: 10px;
+    bottom: 10px;
+    position: absolute;
+    text-align: center;
+    color: #A0F0FF;
+    font-size: 468.72px;
+    font-family: Labil Grotesk;
+    font-weight: 600;
+    line-height: 468.72px;
+    word-wrap: break-word;
+}
+
+/* Dispositivos muito pequenos (até 320px - celulares antigos e compactos) */
+@media screen and (max-width: 320px) {
+    
+}
+
+/* Smartphones pequenos e médios (321px a 480px) */
+@media screen and (max-width: 480px) {
+
+    /* Ajustes para celulares padrão */
     .slider-container {
         width: 90%;
     }
@@ -332,4 +352,17 @@ button:active {
     .slider-numbers span {
         font-size: 12px;
     }
+}
+
+/* Smartphones grandes e pequenos tablets (481px a 768px) */
+@media screen and (max-width: 768px) {
+    /* Ajustes para celulares maiores e tablets pequenos */
+}
+
+/* Tablets e telas médias (769px a 1024px) */
+@media screen and (max-width: 1024px) {
+    .tagQuiz{
+        display: none;
+    }
+    /* Ajustes para tablets e alguns notebooks pequenos */
 }
