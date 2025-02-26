@@ -13,10 +13,11 @@ const fundos = [
     './imagens/fundo_pg_oca_uso.png',         // Tela 3
     './imagens/fundo_pg_momento.png',         // Tela 4
     './imagens/fundo_pg_clima.png',         // Tela 5
-    './imagens/fundo_tela6.png',         // Tela 6
-    './imagens/fundo_tela7.png',         // Tela 7
-    './imagens/fundo_tela8.png',         // Tela 8
-    './imagens/fundo_tela9.png'          // Tela 9
+    './imagens/fundo_pg_sexo.png',         // Tela 6
+    './imagens/fundo_pg_sentimento.png',         // Tela 7
+    './imagens/fundo_pg_perfume.png',         // Tela 8
+    './imagens/fundo_pg_descubra.png',          // Tela 9
+    './imagens/fundo_pg_resultado.png'          // Tela 10
 ];
 
 function atualizarTela() {
