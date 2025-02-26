@@ -144,8 +144,8 @@ button:active {
 }
 
 .opcOCUSO {
-    width: 180px;
-    height: 20px;
+    width: 50px;
+    height: 0px;
     padding-left: 37px;
     padding-right: 37px;
     padding-top: 19px;
@@ -166,7 +166,7 @@ button:active {
 
 .opcOCUSOtext {
     color: white;
-    font-size: 16.56px;
+    font-size: 12px;
     font-family: Labil Grotesk;
     font-weight: 400;
     word-wrap: break-word
