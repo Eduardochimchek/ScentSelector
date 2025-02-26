@@ -273,6 +273,7 @@ button:active {
     gap: 14.89px;
     display: inline-flex;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .opcSENTIMENTO:hover,
