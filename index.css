@@ -222,10 +222,10 @@ button:active {
 .input_Sentimento {
     display: flex;
     align-items: center;
-    width: 500px;
+    /* width: 500px; */
     background: #333;
     border-radius: 20px;
-    height: 55px;
+    height: 40px;
     border: 1px solid white;
     justify-content: center;
     text-align: center;
@@ -239,7 +239,7 @@ button:active {
     font-size: 14px;
     font-weight: bold;
     color: black;
-    height: 37px;
+    height: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -260,10 +260,10 @@ button:active {
 }
 
 .opcSENTIMENTO {
-    width: 215px;
-    height: 8px;
-    padding-left: 40.19px;
-    padding-right: 40.19px;
+    width: 50px;
+    height: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
     padding-top: 20.84px;
     padding-bottom: 20.84px;
     border-radius: 74.06px;
@@ -282,7 +282,7 @@ button:active {
 
 .opcSENTIMENTOtext {
     color: white;
-    font-size: 17.86px;
+    font-size: 10px;
     font-family: Sora;
     font-weight: 300;
     word-wrap: break-word;

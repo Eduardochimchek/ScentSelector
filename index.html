@@ -255,54 +255,47 @@
         </div>
         <div class="tela">
             <div class="tagQuiz">QUIZ</div>
-            <div style="display: grid;grid-template-columns: 50% 50%;height: 100%;overflow: hidden;">
-                <div style="display: flex;align-items: center;flex-direction: column;">
-                    <div style="height: 20%;display: flex;align-items: center;justify-content: start;width: 100%;padding-left: 50%;">
-                        <img src="./imagens/Logo_digital_perfumes.png" style="max-width: 100%; height: auto;margin-right: 30px;">
-                        <div style="width: 202.11px; height: 50.06px;background: #A0F0FF; border-radius: 57.28px; justify-content: center; align-items: center; display: inline-flex">
-                          <div style="color: black; font-size: 13.91px; font-family: Sora; font-weight: 600; word-wrap: break-word">Sentimento</div>
+            <div style="display: grid;grid-template-rows: 50% 50%;height: 100%;overflow: hidden;">
+                <div style="display: flex;align-items: center;flex-direction: column;/* justify-content: center; */height: 100%;">
+                    <div style="height: 45%;display: flex;align-items: center;justify-content: space-around;width: 100%;/* padding-left: 47%; */flex-direction: column;">
+                        <img src="./imagens/Logo_digital_perfumes.png" style="max-width: 100%;height: 45px;/* margin-right: 30px; */margin-bottom: 10px;">
+                        <div style="width: 202.11px;height: 38.06px;background: #A0F0FF;border-radius: 57.28px;justify-content: center;align-items: center;display: inline-flex">
+                          <div style="color: black;font-size: 12px;font-family: Sora;font-weight: 600;word-wrap: break-word">Sentimento</div>
                         </div>
                     </div>
-                    <div style="width: 100%;height: 40%;display: flex;align-items: start;flex-direction: column;">
-                        <span style="color: white;padding-left: 25%;text-align: start;font-size: 94px;font-family: Labil Grotesk;font-weight: 600;line-height: 94px;word-wrap: break-word;max-width: 620px;">Que <span style="color: #A0F0FF; font-size: 94px; font-family: Labil Grotesk; font-weight: 600; line-height: 94px; word-wrap: break-word">sentimento</span> você escolheria transmitir?</span>
-                    </div>
-                    <div style="height: 40%;width: 100%;">
-                        <div style="width: 300px;height: 42px;background: #101010;border-radius: 58.22px;display: flex;justify-content: space-between;align-items: center;padding: 5px 20px;margin-top: 10%;margin-left: 25%;">
-                            <div style="color: white; font-size: 13.91px; font-family: Sora; font-weight: 600; word-wrap: break-word">Escolha</div>
-                            <img src="./imagens/seta.png">
-                        </div>
+                    <div style="width: 100%;height: 55%;display: flex;/* align-items: center; */flex-direction: column;justify-content: center;/* padding: 0px 35px; */">
+                        <span style="color: white;/* padding-left: 15%; */text-align: center;font-size: 45px;font-family: Labil Grotesk;font-weight: 600;line-height: 45px;word-wrap: break-word;max-width: 640px;padding: 0px 40px;">Que <span style="color: #A0F0FF;font-size: 45px;font-family: Labil Grotesk;font-weight: 600;line-height: 47px;word-wrap: break-word">sentimento</span> você escolheria transmitir?</span>
                     </div>
                 </div>
                 <div style="display: flex;align-items: center;justify-content: center;">
-                    <div style="width: 710px; height: 620px;padding: 40px 0px;background: #101010; border-radius: 31.52px;z-index: 2;display: flex;align-items: center;justify-content: center;gap: 15px;flex-direction: column;">
-                        <div style="display: flex;align-items: center;justify-content: start;width: 100%;margin-left: 20%;">
+                    <div style="width: 90%;height: 80%;padding: 40px 0px;/* background: #101010; */border-radius: 31.52px;z-index: 2;display: flex;align-items: center;justify-content: center;gap: 15px;flex-direction: row;flex-wrap: wrap;">
+                        <div style="display: flex;align-items: center;/* justify-content: start; *//* width: 100%; *//* margin-left: 20%; *//* flex-wrap: wrap; */">
                             <div class="opcSENTIMENTO" onclick="selSentimeto(this)">
                                 <div class="opcSENTIMENTOtext">CONFIANÇA</div>
                             </div>
                         </div>
-                        <div style="display: flex;align-items: center;justify-content: end;width: 100%;margin-right: 20%;">
+                        <div style="display: flex;align-items: center;/* justify-content: end; *//* width: 100%; *//* margin-right: 20%; */">
                             <div class="opcSENTIMENTO" onclick="selSentimeto(this)">
                                 <div class="opcSENTIMENTOtext">CONHECIMENTO</div>
                             </div>
                         </div>
-                        <div style="display: flex;align-items: center;justify-content: start;width: 100%;margin-left: 20%;">
+                        <div style="display: flex;align-items: center;/* justify-content: start; *//* width: 100%; *//* margin-left: 20%; */">
                             <div class="opcSENTIMENTO" onclick="selSentimeto(this)">
                                 <div class="opcSENTIMENTOtext">PODER</div>
                             </div>
                         </div>
-                        <div style="display: flex;align-items: center;justify-content: end;width: 100%;margin-right: 20%;">
+                        <div style="display: flex;align-items: center;/* justify-content: end; *//* width: 100%; *//* margin-right: 20%; */">
                             <div class="opcSENTIMENTO" onclick="selSentimeto(this)">
                                 <div class="opcSENTIMENTOtext">RESPEITO</div>
                             </div>
                         </div>
-                        <div style="width: 100%;display: flex;flex-direction: column;justify-content: center;align-items: center;margin-top: 100px;">
+                        <div style="width: 100%;display: flex;flex-direction: column;justify-content: center;align-items: center;margin-top: 20px;">
                             <div class="input_Sentimento">
                                 <div class="label_Sentimento">OUTROS:</div>
                                 <input type="text" class="input-field_Sentimento" placeholder="Informe aqui...">
                             </div>
                             <div style="margin-top: 20px;">
-                                <button style="background: #A0F0FF; padding: 15px 30px; font-size: 20px; border-radius: 56px;"
-                                    onclick="avancar()">Avançar</button>
+                                <button style="background: #A0F0FF;padding: 10px 30px;font-size: 16px;border-radius: 56px;" onclick="avancar()">Avançar</button>
                             </div>
                         </div>
                     </div>
