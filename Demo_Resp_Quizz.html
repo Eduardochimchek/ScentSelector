@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Recomendação de Perfume</title>
+    <script src="./Plugins/papaparse.min.js"></script>
+</head>
+
+<body>
+    <h2>Teste de Recomendação de Perfume</h2>
+    <button onclick="testarRecomendacao()">Testar</button>
+    <div id="resultado"></div>
+
+    <script>
+        async function loadCSV() {
+            const response = await fetch('./model/perfumesAll.csv');
+            const csvText = await response.text();
+
+            return new Promise((resolve) => {
+                Papa.parse(csvText, {
+                    header: true,
+                    skipEmptyLines: true,
+                    complete: (results) => {
+                        // Normalizar os nomes das colunas removendo espaços extras
+                        const perfumes = results.data.map(perfume => {
+                            let novoObjeto = {};
+                            Object.keys(perfume).forEach(chave => {
+                                let chaveLimpa = chave.trim(); // Remove espaços extras
+                                novoObjeto[chaveLimpa] = perfume[chave].trim(); // Remove espaços extras dos valores também
+                            });
+                            return novoObjeto;
+                        });
+
+                        resolve(perfumes);
+                    },
+                });
+            });
+
+        }
+
+        function calcularSimilaridade(perfumes, respostas) {
+            let melhorPerfume = null;
+            let maiorPontuacao = -1;
+
+            perfumes.forEach(perfume => {
+                let pontuacao = 0;
+
+                function normalizarTexto(texto) {
+                    return texto ? texto.trim().toLowerCase() : "";
+                }
+
+                // Comparações simples de strings
+                if (normalizarTexto(perfume['Ocasião de Uso']) === normalizarTexto(respostas.ocasião)) pontuacao++;
+                if (normalizarTexto(perfume['Período de Uso']) === normalizarTexto(respostas.periodo)) pontuacao++;
+                if (normalizarTexto(perfume['Clima']) === normalizarTexto(respostas.clima)) pontuacao++;
+                if (normalizarTexto(perfume['Sexo']) === normalizarTexto(respostas.sexo)) pontuacao++;
+                if (normalizarTexto(perfume['Sentimento']) === normalizarTexto(respostas.sentimento)) pontuacao++;
+                if (normalizarTexto(perfume['Estilo']) === normalizarTexto(respostas.estilo)) pontuacao++;
+                if (normalizarTexto(perfume['Intensidade']) === normalizarTexto(respostas.intensidade)) pontuacao++;
+
+                // Comparação para faixa etária considerando intervalos
+                let faixaEtariaCSV = normalizarTexto(perfume['Faixa Etária']);
+                let idadeUsuario = parseInt(respostas.faixaEtaria);
+
+                if (faixaEtariaCSV.includes("-")) {
+                    // Para faixa etária no formato "X-Y"
+                    let [min, max] = faixaEtariaCSV.split('-').map(num => parseInt(num.trim()));
+                    if (idadeUsuario >= min && idadeUsuario <= max) pontuacao++;
+                } else {
+                    // Caso seja um número exato, como "30"
+                    if (faixaEtariaCSV === respostas.faixaEtaria) pontuacao++;
+                }
+
+                // Se a pontuação for maior, atualiza o melhor perfume
+                if (pontuacao > maiorPontuacao) {
+                    maiorPontuacao = pontuacao;
+                    melhorPerfume = perfume;
+                }
+            });
+
+            return melhorPerfume;
+        }
+
+        async function testarRecomendacao() {
+            const respostasFixa = {
+                ocasião: "Casual",  // Combinação de ocasiões sugeridas
+                periodo: "Outono",        // Período sugerido
+                clima: "Quente",                    // Clima sugerido
+                sexo: "Masculino",                // Gênero sugerido
+                sentimento: "Refrescante",  // Sentimentos associados
+                estilo: "Jovem",            // Estilo sugerido
+                faixaEtaria: "20",             // Faixa etária sugerida
+                intensidade: "Leve"           // Intensidade da fragrância
+            };
+
+            const perfumes = await loadCSV();
+            console.log("Dados carregados:", perfumes);
+
+            const melhorPerfume = calcularSimilaridade(perfumes, respostasFixa);
+            console.log("Melhor perfume encontrado:", melhorPerfume);
+
+            if (melhorPerfume) {
+                document.getElementById("resultado").innerHTML =
+                    `<h3>Recomendamos o perfume: ${melhorPerfume["Perfume"] || melhorPerfume[" perfume "]}</h3>`;
+            } else {
+                document.getElementById("resultado").innerHTML = "<p>Nenhum perfume encontrado.</p>";
+            }
+        }
+    </script>
+</body>
+
+</html>
