@@ -1,455 +1,1078 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Digital Perfumes Quiz</title>
-    <link rel="stylesheet" href="index.css">
-</head>
-
-<body>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
     <div id="container">
-        <div class="tela ativo pg_principal">
-            <div style="height: 100%;width: 100%;display: flex;align-items: center;justify-content: center;flex-direction: column;gap: 50px;">
-                <img src="./imagens/Logo_digital_perfumes.png" style="max-width: 100%; height: auto;" />
-                <div class="texto" style="margin: 10px;">Seu Perfume, seu estilo.</div>
-                <div>
-                    <button style="background: #A0F0FF; padding: 15px 30px; font-size: 20px; border-radius: 56px;"
-                        onclick="avancar()">Descubra seu perfume</button>
-                </div>
+      <div class="tela ativo pg_principal">
+        <div id="divGeralPrincipal">
+          <img src="./imagens/Logo_digital_perfumes.png" id="imgLogo" />
+
+          <div>
+            <div class="texto" style="margin: 10px 10px 20px 10px">
+              Seu Perfume, seu estilo.
             </div>
+
+            <button id="buttonPrincipal" onclick="avancar()">
+              Descubra seu perfume
+            </button>
+          </div>
         </div>
-        <div class="tela">
-            <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 100%;width: 100%;">
-                <img src="./imagens/Logo_digital_perfumes.png" style="max-width: 100%; height: auto;margin-bottom: 30px;" />
+      </div>
+      <div class="tela">
+        <div
+          style="
+            height: 100%;
+            display: grid;
+            grid-template-rows: auto min-content;
+          "
+        >
+          <div id="divGeralIdade">
+            <div style="margin: 0 auto">
+              <img src="./imagens/Logo_digital_perfumes.png" id="imgLogo" />
+            </div>
 
-                <div style="margin-top: 20px; background: #101010; border-radius: 50px; padding: 12px 25px; font-size: 18px; color: white; display: inline-block;"> Idade</div>
-                <div class="texto" style="margin: 20px; font-size: 3vw;">Quantos anos tem?</div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+              "
+            >
+              <div
+                style="
+                  margin-top: 20px;
+                  background: #a0f0ff;
+                  border-radius: 50px;
+                  padding: 12px 25px;
+                  font-size: 18px;
+                  color: #000;
+                  display: inline-block;
+                "
+              >
+                Idade
+              </div>
+              <div class="texto" style="margin: 20px">Quantos anos tem?</div>
 
-                <div style="text-align: center;width: 80%;max-width: 600px;">
-                    <div class="slider-container" id="slider">
-                        <div class="slider-line"></div>
-                        <div class="slider-thumb" id="thumb">0</div>
-                    </div>
-
-                    <div class="slider-numbers">
-                        <span>0</span>
-                        <span>20</span>
-                        <span>40</span>
-                        <span>60</span>
-                        <span>80</span>
-                        <span>100</span>
-                    </div>
+              <div
+                id="SlideDiv"
+                style="
+                  text-align: center;
+                  width: 80%;
+                  max-width: 100%;
+                  margin: 0 auto;
+                "
+              >
+                <div class="slider-container" id="slider">
+                  <div class="slider-line"></div>
+                  <div class="slider-thumb" id="thumb">0</div>
                 </div>
 
-
-                <button style="background: #A0F0FF; padding: 15px 30px; font-size: 20px; border-radius: 56px;margin-top: 40px;" onclick="avancar()">Descubra mais</button>
-            </div>  
-        </div>
-        <div class="tela">
-            <div class="tagQuiz">QUIZ</div>
-            <div style="display: grid;grid-template-rows: 50% 50%;height: 100%;overflow: hidden;">
-                <div style="display: flex;align-items: center;flex-direction: column;/* justify-content: center; */height: 100%;">
-                    <div style="height: 45%;display: flex;align-items: center;justify-content: space-around;width: 100%;/* padding-left: 47%; */flex-direction: column;">
-                        <img src="./imagens/Logo_digital_perfumes.png" style="max-width: 100%;height: 45px;/* margin-right: 30px; */margin-bottom: 10px;">
-                        <div style="width: 202.11px;height: 38.06px;background: #A0F0FF;border-radius: 57.28px;justify-content: center;align-items: center;display: inline-flex">
-                          <div style="color: black;font-size: 12px;font-family: Sora;font-weight: 600;word-wrap: break-word">Ocasião de uso?</div>
-                        </div>
-                    </div>
-                    <div style="width: 100%;height: 55%;display: flex;/* align-items: center; */flex-direction: column;justify-content: center;/* padding: 0px 35px; */">
-                        <span style="color: white;/* padding-left: 15%; */text-align: center;font-size: 45px;font-family: Labil Grotesk;font-weight: 600;line-height: 45px;word-wrap: break-word;max-width: 640px;padding: 0px 40px;">Em qual ocasião você pretende usar o <span style="color: #A0F0FF;font-size: 45px;font-family: Labil Grotesk;font-weight: 600;line-height: 47px;word-wrap: break-word">perfume?</span></span>
-                    </div>
-                    
+                <div class="slider-numbers">
+                  <span>0</span>
+                  <span>20</span>
+                  <span>40</span>
+                  <span>60</span>
+                  <span>80</span>
+                  <span>100</span>
                 </div>
-                <div style="display: flex;align-items: start;justify-content: center;margin-top: 15px;">
-                  <div style="width: 90%;height: 70%;background: #101010;border-radius: 31.52px;z-index: 2;max-width: 300px;">
-                      <div style="width: 100%; height: 100%;display: flex;flex-wrap: wrap;">
-                        <div style="display: flex;align-items: center;justify-content: center;flex-direction: column;gap: 30px;width: 50%;margin: 10px 0px;">
-                            <div onclick="avancar()" class="opcOCUSO">
-                              <div class="opcOCUSOtext">FESTA</div>
-                            </div>
-                            <div onclick="avancar()" class="opcOCUSO">
-                              <div class="opcOCUSOtext">JANTAR</div>
-                            </div>
-                            <div onclick="avancar()" class="opcOCUSO">
-                              <div class="opcOCUSOtext">PRAIA</div>
-                            </div> 
-                        </div>
-                        <div style="display: flex;align-items: start;justify-content: center;flex-direction: column;gap: 30px;width: 50%;margin: 10px 0px;">
-                            <div onclick="avancar()" class="opcOCUSO">
-                              <div class="opcOCUSOtext">TRABALHO</div>
-                            </div>
-                            <div onclick="avancar()" class="opcOCUSO">
-                              <div class="opcOCUSOtext">DIA A DIA</div>
-                            </div>
-                            <div onclick="avancar()" class="opcOCUSO">
-                              <div class="opcOCUSOtext">ANIVERSÁRIO</div>
-                            </div>
-                            <div onclick="avancar()" class="opcOCUSO">
-                              <div class="opcOCUSOtext">OCASIÃO ESPECIAL</div>
-                            </div>
-                        </div>
+              </div>
+
+              <div id="divIdade">
+                <div id="labelIdade">Idade</div>
+                <input type="text" placeholder="Informe aqui" id="inputIdade" />
+              </div>
+            </div>
+          </div>
+          <div style="padding-bottom: 53px; width: 100%">
+            <button
+              style="
+                background: #a0f0ff;
+                padding: 15px 30px;
+                font-size: 20px;
+                border-radius: 56px;
+                margin-top: 40px;
+              "
+              onclick="avancar()"
+            >
+              Descubra mais
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="tela">
+        <div class="tagQuiz">QUIZ</div>
+        <div style="height: 100%;display: grid;grid-template-rows: auto min-content;">
+          <div id="divGeralOcasiao">
+            <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoGrid" />
+            <!-- <div id="textoTa" style="background: #a0f0ff;border-radius: 50px;padding: 12px 25px;font-size: 18px;color: #000;display: inline-block;">Ocasião de uso?</div> -->
+
+            <div id="divDual" style="display: flex;align-items: center;justify-content: center;flex-direction: column;height: 100%;">
+                <div id="divAjuste">
+                    <div id="divImgOca" style="display: flex;align-items: center;padding: 20px;">
+                        <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoDesktok" />
+                        <div id="textT"  style="background: #a0f0ff;border-radius: 50px;padding: 12px 25px;font-size: 18px;color: #000;display: inline-block;">Ocasião de uso?</div>
+                    </div>
+
+                    <div class="texto textoDesk" style="margin: 20px">Em qual ocasião você pretende usar o <span style="color: #a0f0ff">perfume?</span></div>
+                </div>
+
+              <div id="divFora" style="
+                  background-color: #101010;
+                  border-radius: 18px;
+                  padding: 20px;
+                "
+              >
+                <div id="divDadosOcasiao"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    gap: 20px;
+                    width: 100%;
+                  "
+                >
+                  <div id="divOcasiao">
+                    <div onclick="avancar()" class="opcOCUSO">FESTA</div>
+                    <div onclick="avancar()" class="opcOCUSO">TRABALHO</div>
+                  </div>
+
+                  <div id="divOcasiao">
+                    <div onclick="avancar()" class="opcOCUSO">JANTAR</div>
+                    <div onclick="avancar()" class="opcOCUSO">DIA A DIA</div>
+                  </div>
+
+                  <div id="divOcasiao">
+                    <div onclick="avancar()" class="opcOCUSO">PRAIA</div>
+                    <div onclick="avancar()" class="opcOCUSO">ANIVERSÁRIO</div>
+                  </div>
+
+                  <div id="divOcasiao" class="ocasiaoSolo">
+                    <div onclick="avancar()" class="opcOCUSO">
+                      OCASIÃO ESPECIAL
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="background-color: #101010;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 50px;
+              padding: 10px;
+              width: 183px;
+              height: 15px;
+              border-radius: 63px;
+              margin: 0 auto;
+              margin-bottom: 53px;
+              margin-top: 20px;
+            "
+          >
+            <p style="font-size: 12px; font-weight: 900">Escolha</p>
+            <img src="./imagens/seta.png" alt="Seta branca" />
+          </div>
+        </div>
+      </div>
+      <div class="tela">
+        <div class="tagQuiz">QUIZ</div>
+        <div style="height: 100%;display: grid;grid-template-rows: auto min-content;">
+          <div id="divGeralOcasiao">
+            <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoGrid" />
+            <!-- <div id="textoTa" style="background: #a0f0ff;border-radius: 50px;padding: 12px 25px;font-size: 18px;color: #000;display: inline-block;">Momento do dia</div> -->
+
+            <div id="divDual" style="display: flex;align-items: center;justify-content: center;flex-direction: column;height: 100%;">
+                <div id="divAjuste">
+                    <div id="divImgOca" style="display: flex;align-items: center;padding: 20px;">
+                        <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoDesktok" />
+                        <div id="textT" style="background: #a0f0ff;border-radius: 50px;padding: 12px 25px;font-size: 18px;color: #000;display: inline-block;">Momento do dia</div>
+                    </div>
+
+                    <div class="texto textoDesk" style="margin: 20px">Quando você pretende usar o <span style="color: #a0f0ff">perfume?</span></div>
+                </div>
+
+                <div id="divFora" class="divForaTempo" style="
+                  background-color: #101010;
+                  border-radius: 18px;
+                  padding: 20px;
+                "
+              >
+                <div id="divDadosOcasiao"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: row;
+                    gap: 20px;
+                    width: 100%;
+                  "
+                >
+                <div>
+                    <div class="opcMOMENTO" onclick="avancar()">
+                      <div data-svg-wrapper="">
+                        <svg
+                          width="85"
+                          height="84"
+                          viewBox="0 0 85 84"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          style="width: 50px; height: 50px"
+                        >
+                          <path
+                            d="M18.4281 21.5311C19.4505 22.5535 21.1056 22.5535 22.1252 21.5311C23.145 20.5088 23.145 18.8537 22.1252 17.834L16.5795 12.2854C15.5572 11.263 13.902 11.263 12.8823 12.2854C11.8599 13.3078 11.8599 14.9629 12.8823 15.9827L18.4281 21.5311ZM20.0021 60.6686L14.5085 66.1622C13.4967 67.1741 13.4967 68.8136 14.5085 69.8254C15.5204 70.8373 17.1599 70.8373 18.1718 69.8254L23.6654 64.3318C24.6772 63.32 24.6772 61.6804 23.6654 60.6686C22.6535 59.6567 21.0141 59.6566 20.0021 60.6686ZM42.4628 13.1064C43.9061 13.1064 45.0775 11.935 45.0775 10.4917V2.64746C45.0775 1.20412 43.9061 0.0327148 42.4628 0.0327148C41.0195 0.0327148 39.8481 1.20412 39.8481 2.64746V10.4917C39.8481 11.935 41.0195 13.1064 42.4628 13.1064ZM67.6193 20.3753L73.1129 14.8817C74.1248 13.8699 74.1248 12.2303 73.1129 11.2185C72.1011 10.2066 70.4614 10.2066 69.4495 11.2185L63.9559 16.7121C62.9441 17.7239 62.9441 19.3635 63.9559 20.3753C64.9679 21.3873 66.6074 21.3873 67.6193 20.3753ZM11.0859 39.2538H3.24169C1.79836 39.2538 0.626953 40.4252 0.626953 41.8686C0.626953 43.3119 1.79836 44.4833 3.24169 44.4833H11.0859C12.5293 44.4833 13.7007 43.3119 13.7007 41.8686C13.7007 40.4252 12.5293 39.2538 11.0859 39.2538ZM42.4628 70.6307C41.0195 70.6307 39.8481 71.8021 39.8481 73.2455V81.0897C39.8481 82.533 41.0195 83.7044 42.4628 83.7044C43.9061 83.7044 45.0775 82.533 45.0775 81.0897V73.2455C45.0775 71.8021 43.9061 70.6307 42.4628 70.6307ZM81.6839 39.2538H73.8397C72.3964 39.2538 71.225 40.4252 71.225 41.8686C71.225 43.3119 72.3964 44.4833 73.8397 44.4833H81.6839C83.1273 44.4833 84.2987 43.3119 84.2987 41.8686C84.2987 40.4252 83.1273 39.2538 81.6839 39.2538ZM66.4975 62.206C65.4751 61.1836 63.82 61.1836 62.8002 62.206C61.7778 63.2285 61.7778 64.8835 62.8002 65.9033L68.3461 71.4491C69.3685 72.4715 71.0236 72.4715 72.0434 71.4491C73.0631 70.4266 73.0657 68.7716 72.0434 67.7518L66.4975 62.206ZM42.4628 18.3202C29.4571 18.3202 18.9144 28.8628 18.9144 41.8686C18.9144 54.8743 29.4571 65.417 42.4628 65.417C55.4686 65.417 66.0112 54.8743 66.0112 41.8686C66.0112 28.8628 55.4686 18.3202 42.4628 18.3202Z"
+                            fill="black"
+                          ></path>
+                        </svg>
                       </div>
+                    </div>
+                    <div
+                      style="
+                        color: white;
+                        font-size: 12px;
+                        font-family: Sora;
+                        font-weight: 400;
+                        word-wrap: break-word;
+                        margin-top: 10px;
+                      "
+                    >
+                      Durante o dia
+                    </div>
+                  </div>
+                  <div>
+                    <div class="opcMOMENTO" onclick="avancar()">
+                      <div data-svg-wrapper="">
+                        <svg
+                          width="109"
+                          height="59"
+                          viewBox="0 0 109 59"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          style="width: 50px; height: 50px"
+                        >
+                          <path
+                            d="M54.762 25.657C38.7729 25.6754 25.816 38.6326 25.7976 54.6213C25.7976 56.9065 27.6503 58.7592 29.9354 58.7592H79.5889C81.874 58.7592 83.7267 56.9065 83.7267 54.6213C83.7079 38.6323 70.7507 25.6754 54.762 25.657ZM54.762 17.3813C57.0471 17.3813 58.8998 15.5287 58.8998 13.2435V4.9679C58.8998 2.68276 57.0471 0.830078 54.762 0.830078C52.4768 0.830078 50.6241 2.68276 50.6241 4.9679V13.2435C50.6241 15.5287 52.4765 17.3813 54.762 17.3813ZM28.4276 22.4363L22.5769 16.5853C20.9816 14.9492 18.362 14.9157 16.7255 16.511C15.0894 18.1064 15.0559 20.726 16.6513 22.3624C16.6758 22.3873 16.7003 22.4122 16.7255 22.4367L22.5769 28.2873C24.2206 29.8748 26.8402 29.8294 28.4276 28.1857C29.9765 26.5821 29.9765 24.04 28.4276 22.4363ZM13.3842 50.4835H5.10852C2.82339 50.4835 0.970703 52.3362 0.970703 54.6213C0.970703 56.9065 2.82339 58.7592 5.10852 58.7592H13.3842C15.6693 58.7592 17.522 56.9065 17.522 54.6213C17.522 52.3362 15.6693 50.4835 13.3842 50.4835ZM104.415 50.4835H96.1398C93.8546 50.4835 92.002 52.3362 92.002 54.6213C92.002 56.9065 93.8546 58.7592 96.1398 58.7592H104.415C106.701 58.7592 108.553 56.9065 108.553 54.6213C108.553 52.3362 106.701 50.4835 104.415 50.4835ZM92.798 16.5853C91.1821 14.9697 88.5625 14.9697 86.9466 16.5853L81.0959 22.4367C79.5085 24.0803 79.5539 26.6999 81.1976 28.2873C82.8012 29.8359 85.3433 29.8359 86.9466 28.2873L92.798 22.4367C94.4136 20.8208 94.4136 18.2012 92.798 16.5853Z"
+                            fill="black"
+                          ></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div
+                      style="
+                        color: white;
+                        font-size: 12px;
+                        font-family: Sora;
+                        font-weight: 400;
+                        word-wrap: break-word;
+                        margin-top: 10px;
+                      "
+                    >
+                      À Tarde
+                    </div>
+                  </div>
+                  <div>
+                    <div class="opcMOMENTO" onclick="avancar()">
+                      <div data-svg-wrapper="">
+                        <svg
+                          width="75"
+                          height="77"
+                          viewBox="0 0 75 77"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          style="height: 45px; width: 45px"
+                        >
+                          <path
+                            d="M40.0766 4.0058C40.3994 3.8038 40.6462 3.5041 40.7796 3.15212C40.913 2.80015 40.9258 2.41512 40.8159 2.05542C40.7078 1.70572 40.4895 1.39865 40.1921 1.17843C39.8948 0.958207 39.5338 0.836193 39.1613 0.829956C32.3015 0.920187 25.5894 2.79571 19.7115 6.26463C13.8337 9.73355 9.00113 14.6713 5.70832 20.5728C2.41551 26.4743 0.780634 33.1276 0.970964 39.852C1.16129 46.5764 3.16999 53.1306 6.79155 58.8439C10.4131 64.5572 15.5175 69.2245 21.5825 72.3684C27.6476 75.5123 34.4555 77.0199 41.3097 76.7369C48.164 76.4539 54.8186 74.3905 60.5926 70.7578C66.3667 67.1251 71.0529 62.0536 74.1718 56.062C74.3466 55.7273 74.4051 55.3459 74.3386 54.9757C74.272 54.6055 74.084 54.2667 73.8032 54.0108C73.5223 53.7549 73.1639 53.596 72.7825 53.5581C72.4011 53.5202 72.0174 53.6054 71.6899 53.8009C64.9512 57.9208 56.8193 59.247 49.0833 57.4877C41.3474 55.7285 34.6409 51.0279 30.4394 44.4201C26.2379 37.8123 24.8854 29.8385 26.6795 22.2529C28.4736 14.6672 33.2674 8.09115 40.0062 3.97128L40.0766 4.0058Z"
+                            fill="black"
+                          ></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div
+                      style="
+                        color: white;
+                        font-size: 12px;
+                        font-family: Sora;
+                        font-weight: 400;
+                        word-wrap: break-word;
+                        margin-top: 10px;
+                      "
+                    >
+                      À Noite
+                    </div>
                   </div>
                 </div>
             </div>
-        </div>
-        <div class="tela">
-            <div class="tagQuiz">QUIZ</div>
-            <div style="display: grid;grid-template-rows: 50% 50%;height: 100%;overflow: hidden;">
-                <div style="display: flex;align-items: center;flex-direction: column;/* justify-content: center; */height: 100%;">
-                    <div style="height: 45%;display: flex;align-items: center;justify-content: space-around;width: 100%;/* padding-left: 47%; */flex-direction: column;">
-                        <img src="./imagens/Logo_digital_perfumes.png" style="max-width: 100%;height: 45px;/* margin-right: 30px; */margin-bottom: 10px;">
-                        <div style="width: 202.11px;height: 38.06px;background: #A0F0FF;border-radius: 57.28px;justify-content: center;align-items: center;display: inline-flex">
-                          <div style="color: black;font-size: 12px;font-family: Sora;font-weight: 600;word-wrap: break-word">Momento do dia</div>
-                        </div>
-                    </div>
-                    <div style="width: 100%;height: 55%;display: flex;/* align-items: center; */flex-direction: column;justify-content: center;/* padding: 0px 35px; */">
-                        <span style="color: white;/* padding-left: 15%; */text-align: center;font-size: 45px;font-family: Labil Grotesk;font-weight: 600;line-height: 45px;word-wrap: break-word;max-width: 640px;padding: 0px 40px;">Quando você pretende usar o <span style="color: #A0F0FF;font-size: 45px;font-family: Labil Grotesk;font-weight: 600;line-height: 47px;word-wrap: break-word">perfume?</span></span>
-                    </div>
-                </div>
-                <div style="display: flex;align-items: start;justify-content: center;">
-                    <div style="width: 73%;height: 80%;/* background: #101010; */border-radius: 31.52px;z-index: 2;display: flex;align-items: center;justify-content: center;gap: 15px;">
-                        <div>
-                            <div class="opcMOMENTO" onclick="avancar()">
-                                <div data-svg-wrapper="">
-                                    <svg width="85" height="84" viewBox="0 0 85 84" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 50px;height: 50px;">
-                                        <path d="M18.4281 21.5311C19.4505 22.5535 21.1056 22.5535 22.1252 21.5311C23.145 20.5088 23.145 18.8537 22.1252 17.834L16.5795 12.2854C15.5572 11.263 13.902 11.263 12.8823 12.2854C11.8599 13.3078 11.8599 14.9629 12.8823 15.9827L18.4281 21.5311ZM20.0021 60.6686L14.5085 66.1622C13.4967 67.1741 13.4967 68.8136 14.5085 69.8254C15.5204 70.8373 17.1599 70.8373 18.1718 69.8254L23.6654 64.3318C24.6772 63.32 24.6772 61.6804 23.6654 60.6686C22.6535 59.6567 21.0141 59.6566 20.0021 60.6686ZM42.4628 13.1064C43.9061 13.1064 45.0775 11.935 45.0775 10.4917V2.64746C45.0775 1.20412 43.9061 0.0327148 42.4628 0.0327148C41.0195 0.0327148 39.8481 1.20412 39.8481 2.64746V10.4917C39.8481 11.935 41.0195 13.1064 42.4628 13.1064ZM67.6193 20.3753L73.1129 14.8817C74.1248 13.8699 74.1248 12.2303 73.1129 11.2185C72.1011 10.2066 70.4614 10.2066 69.4495 11.2185L63.9559 16.7121C62.9441 17.7239 62.9441 19.3635 63.9559 20.3753C64.9679 21.3873 66.6074 21.3873 67.6193 20.3753ZM11.0859 39.2538H3.24169C1.79836 39.2538 0.626953 40.4252 0.626953 41.8686C0.626953 43.3119 1.79836 44.4833 3.24169 44.4833H11.0859C12.5293 44.4833 13.7007 43.3119 13.7007 41.8686C13.7007 40.4252 12.5293 39.2538 11.0859 39.2538ZM42.4628 70.6307C41.0195 70.6307 39.8481 71.8021 39.8481 73.2455V81.0897C39.8481 82.533 41.0195 83.7044 42.4628 83.7044C43.9061 83.7044 45.0775 82.533 45.0775 81.0897V73.2455C45.0775 71.8021 43.9061 70.6307 42.4628 70.6307ZM81.6839 39.2538H73.8397C72.3964 39.2538 71.225 40.4252 71.225 41.8686C71.225 43.3119 72.3964 44.4833 73.8397 44.4833H81.6839C83.1273 44.4833 84.2987 43.3119 84.2987 41.8686C84.2987 40.4252 83.1273 39.2538 81.6839 39.2538ZM66.4975 62.206C65.4751 61.1836 63.82 61.1836 62.8002 62.206C61.7778 63.2285 61.7778 64.8835 62.8002 65.9033L68.3461 71.4491C69.3685 72.4715 71.0236 72.4715 72.0434 71.4491C73.0631 70.4266 73.0657 68.7716 72.0434 67.7518L66.4975 62.206ZM42.4628 18.3202C29.4571 18.3202 18.9144 28.8628 18.9144 41.8686C18.9144 54.8743 29.4571 65.417 42.4628 65.417C55.4686 65.417 66.0112 54.8743 66.0112 41.8686C66.0112 28.8628 55.4686 18.3202 42.4628 18.3202Z" fill="black"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div style="color: white;font-size: 12px;font-family: Sora;font-weight: 400;word-wrap: break-word;margin-top: 10px;">Durante o dia</div>
-                        </div>
-                        <div>
-                            <div class="opcMOMENTO" onclick="avancar()">
-                                <div data-svg-wrapper="">
-                                    <svg width="109" height="59" viewBox="0 0 109 59" fill="none" xmlns="http://www.w3.org/2000/svg" style="
-    width: 50px;
-    height: 50px;
-">
-                                        <path d="M54.762 25.657C38.7729 25.6754 25.816 38.6326 25.7976 54.6213C25.7976 56.9065 27.6503 58.7592 29.9354 58.7592H79.5889C81.874 58.7592 83.7267 56.9065 83.7267 54.6213C83.7079 38.6323 70.7507 25.6754 54.762 25.657ZM54.762 17.3813C57.0471 17.3813 58.8998 15.5287 58.8998 13.2435V4.9679C58.8998 2.68276 57.0471 0.830078 54.762 0.830078C52.4768 0.830078 50.6241 2.68276 50.6241 4.9679V13.2435C50.6241 15.5287 52.4765 17.3813 54.762 17.3813ZM28.4276 22.4363L22.5769 16.5853C20.9816 14.9492 18.362 14.9157 16.7255 16.511C15.0894 18.1064 15.0559 20.726 16.6513 22.3624C16.6758 22.3873 16.7003 22.4122 16.7255 22.4367L22.5769 28.2873C24.2206 29.8748 26.8402 29.8294 28.4276 28.1857C29.9765 26.5821 29.9765 24.04 28.4276 22.4363ZM13.3842 50.4835H5.10852C2.82339 50.4835 0.970703 52.3362 0.970703 54.6213C0.970703 56.9065 2.82339 58.7592 5.10852 58.7592H13.3842C15.6693 58.7592 17.522 56.9065 17.522 54.6213C17.522 52.3362 15.6693 50.4835 13.3842 50.4835ZM104.415 50.4835H96.1398C93.8546 50.4835 92.002 52.3362 92.002 54.6213C92.002 56.9065 93.8546 58.7592 96.1398 58.7592H104.415C106.701 58.7592 108.553 56.9065 108.553 54.6213C108.553 52.3362 106.701 50.4835 104.415 50.4835ZM92.798 16.5853C91.1821 14.9697 88.5625 14.9697 86.9466 16.5853L81.0959 22.4367C79.5085 24.0803 79.5539 26.6999 81.1976 28.2873C82.8012 29.8359 85.3433 29.8359 86.9466 28.2873L92.798 22.4367C94.4136 20.8208 94.4136 18.2012 92.798 16.5853Z" fill="black"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div style="color: white;font-size: 12px;font-family: Sora;font-weight: 400;word-wrap: break-word;margin-top: 10px;">À Tarde</div>
-                        </div>
-                        <div>
-                            <div class="opcMOMENTO" onclick="avancar()">
-                                <div data-svg-wrapper="">
-                                    <svg width="75" height="77" viewBox="0 0 75 77" fill="none" xmlns="http://www.w3.org/2000/svg" style="
-    height: 45px;
-    width: 45px;
-">
-                                    <path d="M40.0766 4.0058C40.3994 3.8038 40.6462 3.5041 40.7796 3.15212C40.913 2.80015 40.9258 2.41512 40.8159 2.05542C40.7078 1.70572 40.4895 1.39865 40.1921 1.17843C39.8948 0.958207 39.5338 0.836193 39.1613 0.829956C32.3015 0.920187 25.5894 2.79571 19.7115 6.26463C13.8337 9.73355 9.00113 14.6713 5.70832 20.5728C2.41551 26.4743 0.780634 33.1276 0.970964 39.852C1.16129 46.5764 3.16999 53.1306 6.79155 58.8439C10.4131 64.5572 15.5175 69.2245 21.5825 72.3684C27.6476 75.5123 34.4555 77.0199 41.3097 76.7369C48.164 76.4539 54.8186 74.3905 60.5926 70.7578C66.3667 67.1251 71.0529 62.0536 74.1718 56.062C74.3466 55.7273 74.4051 55.3459 74.3386 54.9757C74.272 54.6055 74.084 54.2667 73.8032 54.0108C73.5223 53.7549 73.1639 53.596 72.7825 53.5581C72.4011 53.5202 72.0174 53.6054 71.6899 53.8009C64.9512 57.9208 56.8193 59.247 49.0833 57.4877C41.3474 55.7285 34.6409 51.0279 30.4394 44.4201C26.2379 37.8123 24.8854 29.8385 26.6795 22.2529C28.4736 14.6672 33.2674 8.09115 40.0062 3.97128L40.0766 4.0058Z" fill="black"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div style="color: white;font-size: 12px;font-family: Sora;font-weight: 400;word-wrap: break-word;margin-top: 10px;">À Noite</div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-        <div class="tela">
-            <div class="tagQuiz">QUIZ</div>
-            <div style="display: grid;grid-template-rows: 50% 50%;height: 100%;overflow: hidden;">
-                <div style="display: flex;align-items: center;flex-direction: column;/* justify-content: center; */height: 100%;">
-                    <div style="height: 45%;display: flex;align-items: center;justify-content: space-around;width: 100%;/* padding-left: 47%; */flex-direction: column;">
-                        <img src="./imagens/Logo_digital_perfumes.png" style="max-width: 100%;height: 45px;/* margin-right: 30px; */margin-bottom: 10px;">
-                        <div style="width: 202.11px;height: 38.06px;background: #A0F0FF;border-radius: 57.28px;justify-content: center;align-items: center;display: inline-flex">
-                          <div style="color: black;font-size: 12px;font-family: Sora;font-weight: 600;word-wrap: break-word">Clima</div>
-                        </div>
-                    </div>
-                    <div style="width: 100%;height: 55%;display: flex;/* align-items: center; */flex-direction: column;justify-content: center;/* padding: 0px 35px; */">
-                        <span style="color: white;/* padding-left: 15%; */text-align: center;font-size: 45px;font-family: Labil Grotesk;font-weight: 600;line-height: 45px;word-wrap: break-word;max-width: 640px;padding: 0px 40px;">Em qual clima você prefere usar seu <span style="color: #A0F0FF;font-size: 45px;font-family: Labil Grotesk;font-weight: 600;line-height: 47px;word-wrap: break-word">perfume?</span></span>
-                    </div>
-                </div>
-                <div style="display: flex;align-items: start;justify-content: center;">
-                    <div style="width: 90%;height: 80%;/* background: #101010; */border-radius: 31.52px;z-index: 2;display: flex;align-items: center;justify-content: center;gap: 15px;">
-                        <div class="opcCLIMA" style="background: #592200;" onclick="avancar()">
-                            <div data-svg-wrapper="" style="position: relative;width: 50px;height: 50px;">
-                                <svg width="175" height="175" viewBox="0 0 175 175" fill="none" xmlns="http://www.w3.org/2000/svg" style="
-    width: 50px;
-    height: 50px;
-">
-                                    <path d="M138.567 94.0778C138.353 93.4921 137.946 92.9969 137.413 92.6742C136.88 92.3515 136.252 92.2207 135.634 92.3035C135.016 92.3863 134.445 92.6778 134.016 93.1295C133.586 93.5812 133.324 94.1662 133.272 94.7874C132.523 100.434 130.121 105.733 126.367 110.017C133.245 79.2302 113.239 56.9861 113.102 56.8224C97.9271 38.8634 102.785 14.6269 102.84 14.3812C102.951 13.8478 102.901 13.2934 102.697 12.7882C102.493 12.283 102.144 11.8496 101.694 11.5427C101.243 11.2359 100.71 11.0718 100.165 11.0718C99.62 11.0718 99.0874 11.2359 98.6367 11.5427C80.3775 23.9612 73.2539 44.1037 70.4973 56.8497C63.2373 44.595 48.3897 41.3471 48.1986 41.3198C47.6289 41.199 47.0355 41.2637 46.5051 41.5043C45.9748 41.7449 45.5353 42.1489 45.251 42.6571C44.9709 43.1686 44.8596 43.7554 44.9332 44.3339C45.0067 44.9123 45.2612 45.4527 45.6604 45.8778C48.1986 48.5252 49.345 53.6018 48.881 60.1795C48.6408 63.1472 47.7758 66.0306 46.3427 68.6404C38.234 83.6237 33.9496 100.377 33.8696 117.414C33.8973 122.101 34.8431 126.737 36.6535 131.06C48.1168 158.627 70.6065 163.921 86.1637 163.921C89.8013 163.927 93.4336 163.644 97.0264 163.075C100.219 162.612 103.332 161.712 106.279 160.401C154.124 138.621 138.731 94.5145 138.567 94.0778Z" fill="#FF8A42"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="opcCLIMA" style="background: #00394E;" onclick="avancar()">
-                            <div data-svg-wrapper="" style="position: relative;width: 50px;height: 50px;">
-                                <svg width="149" height="149" viewBox="0 0 149 149" fill="none" xmlns="http://www.w3.org/2000/svg" style="
-    width: 50px;
-    height: 50px;
-">
-                                    <g clip-path="url(#clip0_48_333)">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M148.391 89.3083C149.275 94.3084 145.936 99.0767 140.938 99.9604L123.832 102.982L129.767 119.306C131.502 124.077 129.041 129.352 124.268 131.087C123.262 131.455 122.199 131.643 121.128 131.643C117.371 131.643 113.845 129.324 112.487 125.59L103.954 102.121L83.6942 90.4238V113.818L99.7504 132.943C103.017 136.832 102.511 142.632 98.6213 145.895C96.9683 147.288 94.8759 148.051 92.7145 148.049C90.0917 148.049 87.4894 146.932 85.6705 144.766L74.5006 131.464L63.3293 144.766C60.0667 148.655 54.2656 149.161 50.3785 145.895C46.4884 142.632 45.9828 136.832 49.2494 132.943L65.3068 113.818V90.4238L45.0459 102.121L36.5134 125.59C35.1539 129.324 31.6259 131.643 27.8715 131.643C26.8292 131.643 25.7679 131.466 24.731 131.088C19.9587 129.353 17.4972 124.078 19.2322 119.307L25.1675 102.982L8.062 99.9604C3.06329 99.0767 -0.275118 94.3084 0.608612 89.3083C1.49091 84.3081 6.25805 80.9697 11.2593 81.8535L35.8521 86.1977L56.1129 74.5003L35.8521 62.803L11.2593 67.1469C10.7186 67.2417 10.182 67.288 9.65047 67.288C5.2752 67.288 1.3961 64.1516 0.608612 59.6924C-0.275118 54.6923 3.06329 49.9225 8.062 49.0402L25.1675 46.0176L19.2322 29.6944C17.4972 24.9221 19.9587 19.6467 24.731 17.9117C29.5008 16.1768 34.7773 18.6383 36.5137 23.4106L45.0462 46.8798L65.3068 58.5768V35.181L49.2491 16.0564C45.9825 12.1689 46.4882 6.36925 50.3782 3.1041C54.2656 -0.161043 60.0667 0.344603 63.329 4.23462L74.5003 17.5365L85.6702 4.23462C88.9339 0.344603 94.7313 -0.161043 98.6213 3.1041C102.511 6.36925 103.017 12.1692 99.7504 16.0564L83.6942 35.1813V58.5771L103.954 46.88L112.487 23.4109C114.222 18.6386 119.496 16.177 124.268 17.912C129.041 19.647 131.502 24.9221 129.767 29.6947L123.832 46.0179L140.938 49.0405C145.936 49.9228 149.275 54.6926 148.391 59.6927C147.603 64.1507 143.724 67.2883 139.349 67.2883C138.818 67.2883 138.281 67.2423 137.74 67.1472L113.148 62.8033L92.8868 74.5006L113.148 86.198L137.74 81.8537C142.741 80.9697 147.508 84.3081 148.391 89.3083Z" fill="#00BBFF"></path>
-                                    </g>
-                                    <defs>
-                                    <clipPath id="clip0_48_333">
-                                        <rect width="147.097" height="147.097" fill="white" transform="translate(0.951172 0.95166)"></rect>
-                                    </clipPath>
-                                    </defs>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
             </div>
+            <div style="background-color: #101010;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 50px;
+              padding: 10px;
+              width: 183px;
+              height: 15px;
+              border-radius: 63px;
+              margin: 0 auto;
+              margin-bottom: 53px;
+              margin-top: 20px;
+            "
+          >
+            <p style="font-size: 12px; font-weight: 900">Escolha</p>
+            <img src="./imagens/seta.png" alt="Seta branca" />
+          </div>
+          </div>
         </div>
-        <div class="tela">
-            <div class="tagQuiz">QUIZ</div>
-            <div style="display: grid;grid-template-rows: 50% 50%;height: 100%;overflow: hidden;">
-                <div style="display: flex;align-items: center;flex-direction: column;/* justify-content: center; */height: 100%;">
-                    <div style="height: 45%;display: flex;align-items: center;justify-content: space-around;width: 100%;/* padding-left: 47%; */flex-direction: column;">
-                        <img src="./imagens/Logo_digital_perfumes.png" style="max-width: 100%;height: 45px;/* margin-right: 30px; */margin-bottom: 10px;">
-                        <div style="width: 202.11px;height: 38.06px;background: #A0F0FF;border-radius: 57.28px;justify-content: center;align-items: center;display: inline-flex">
-                          <div style="color: black;font-size: 12px;font-family: Sora;font-weight: 600;word-wrap: break-word">Sexo</div>
-                        </div>
-                    </div>
-                    <div style="width: 100%;height: 55%;display: flex;/* align-items: center; */flex-direction: column;justify-content: center;/* padding: 0px 35px; */">
-                        <span style="color: white;/* padding-left: 15%; */text-align: center;font-size: 45px;font-family: Labil Grotesk;font-weight: 600;line-height: 45px;word-wrap: break-word;max-width: 640px;padding: 0px 40px;">Qual é o seu <span style="color: #A0F0FF;font-size: 45px;font-family: Labil Grotesk;font-weight: 600;line-height: 47px;word-wrap: break-word">sexo?</span></span>
-                    </div>
-                </div>
-                <div style="display: flex;align-items: start;justify-content: center;">
-                    <div style="width: 90%;height: 80%;/* padding: 40px 0px; *//* background: #101010; */border-radius: 31.52px;z-index: 2;display: flex;align-items: center;justify-content: center;gap: 15px;">
-                        <div style="display: flex;align-self: center;justify-content: center;">
-                            <div class="opcSEXO" style="background: #EBFCFF;" onclick="avancar()">
-                                <div data-svg-wrapper="">
-                                    <svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg" style="
-    height: 50px;
-    width: 50px;
-">
-                                        <path d="M42.1925 0V8.78627H63.001L47.555 24.2323C42.5971 20.5541 36.4588 18.3775 29.8114 18.3775C13.347 18.3775 0 31.7244 0 48.1888C0 64.653 13.347 78 29.8112 78C46.2755 78 59.6225 64.653 59.6225 48.1888C59.6225 41.5414 57.4459 35.4029 53.7677 30.445L69.2137 14.9992V35.8076H78V0H42.1925ZM29.8112 68.1817C18.7694 68.1817 9.8181 59.2305 9.8181 48.1886C9.8181 37.1467 18.7694 28.1955 29.8112 28.1955C40.8531 28.1955 49.8044 37.1467 49.8044 48.1886C49.8044 59.2306 40.8531 68.1817 29.8112 68.1817Z" fill="#101010"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="display: flex;align-items: center;justify-content: center;flex-direction: column;gap: 20px;">
-                            <div class="opcSEXO" style="background: #A0F0FF;" onclick="avancar()">
-                                <div data-svg-wrapper="">
-                                    <svg width="54" height="94" viewBox="0 0 54 94" fill="none" xmlns="http://www.w3.org/2000/svg" style="
-    height: 50px;
-    width: 50px;
-">
-                                        <path d="M44.1607 67.3743H31.5779V54.641C31.5779 54.5059 31.5502 54.3804 31.5364 54.2476C44.2713 52.0571 54 40.8194 54 27.3205C54.0002 12.2554 41.8892 0 27.0002 0C12.1122 0 0 12.2554 0 27.3205C0 40.8196 9.72952 52.0571 22.463 54.2476C22.4515 54.3804 22.4233 54.5061 22.4233 54.641V67.3743H9.83992C7.31219 67.3743 5.26438 69.4482 5.26438 72.0044C5.26438 74.5615 7.31219 76.6354 9.83992 76.6354H22.4245V89.3699C22.4245 91.9271 24.4734 94 27 94C29.527 94 31.5779 91.9261 31.5779 89.3699V76.6354H44.1607C46.689 76.6354 48.7376 74.5617 48.7376 72.0044C48.7376 69.4484 46.6892 67.3743 44.1607 67.3743ZM9.15303 27.3205C9.15303 17.3626 17.1591 9.2603 27.0002 9.2603C36.8419 9.2603 44.8491 17.3616 44.8491 27.3205C44.8491 37.2794 36.8419 45.3795 27.0002 45.3795C17.1603 45.3797 9.15303 37.2784 9.15303 27.3205Z" fill="#101010"></path>
-                                    </svg>
-                                </div>
-                            </div>
-    
-                            <div class="opcSEXO" style="background: #EA94FF;" onclick="avancar()">
-                                <div data-svg-wrapper="">
-                                    <svg width="73" height="96" viewBox="0 0 73 96" fill="none" xmlns="http://www.w3.org/2000/svg" style="
-    height: 50px;
-    width: 50px;
-">
-                                        <path d="M48.7996 1V6.94861H60.8806L45.9181 21.9111C41.0266 17.9605 34.9814 15.8127 28.6051 15.8127C21.2281 15.8127 14.2927 18.6854 9.07623 23.9018C-1.69208 34.6701 -1.69208 52.1912 9.07623 62.9593C13.5849 67.468 19.3782 70.2241 25.6307 70.8892V78.5627H15.142V84.5113H25.6307V95H31.5793V84.5113H42.068V78.5627H31.5793V70.8892C37.8315 70.2239 43.6252 67.468 48.1337 62.9593C58.1913 52.9017 58.8535 36.9535 50.1231 26.1185L65.0867 11.1549V23.2359H71.0353V1H48.7996ZM43.9274 58.753C39.8345 62.8458 34.393 65.0998 28.6049 65.0998C22.8167 65.0998 17.3752 62.8458 13.2824 58.753C4.83338 50.304 4.83338 36.5569 13.2824 28.1081C17.3752 24.0153 22.8167 21.7613 28.6049 21.7613C34.393 21.7613 39.8344 24.0153 43.9274 28.1081C52.3762 36.5569 52.3762 50.304 43.9274 58.753Z" fill="black" stroke="black" stroke-width="2"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tela">
-            <div class="tagQuiz">QUIZ</div>
-            <div style="display: grid;grid-template-rows: 50% 50%;height: 100%;overflow: hidden;">
-                <div style="display: flex;align-items: center;flex-direction: column;/* justify-content: center; */height: 100%;">
-                    <div style="height: 45%;display: flex;align-items: center;justify-content: space-around;width: 100%;/* padding-left: 47%; */flex-direction: column;">
-                        <img src="./imagens/Logo_digital_perfumes.png" style="max-width: 100%;height: 45px;/* margin-right: 30px; */margin-bottom: 10px;">
-                        <div style="width: 202.11px;height: 38.06px;background: #A0F0FF;border-radius: 57.28px;justify-content: center;align-items: center;display: inline-flex">
-                          <div style="color: black;font-size: 12px;font-family: Sora;font-weight: 600;word-wrap: break-word">Sentimento</div>
-                        </div>
-                    </div>
-                    <div style="width: 100%;height: 55%;display: flex;/* align-items: center; */flex-direction: column;justify-content: center;/* padding: 0px 35px; */">
-                        <span style="color: white;/* padding-left: 15%; */text-align: center;font-size: 45px;font-family: Labil Grotesk;font-weight: 600;line-height: 45px;word-wrap: break-word;max-width: 640px;padding: 0px 40px;">Que <span style="color: #A0F0FF;font-size: 45px;font-family: Labil Grotesk;font-weight: 600;line-height: 47px;word-wrap: break-word">sentimento</span> você escolheria transmitir?</span>
-                    </div>
-                </div>
-                <div style="display: flex;align-items: center;justify-content: center;">
-                    <div style="width: 90%;height: 80%;padding: 40px 0px;/* background: #101010; */border-radius: 31.52px;z-index: 2;display: flex;align-items: center;justify-content: center;gap: 15px;flex-direction: row;flex-wrap: wrap;">
-                        <div style="display: flex;align-items: center;/* justify-content: start; *//* width: 100%; *//* margin-left: 20%; *//* flex-wrap: wrap; */">
-                            <div class="opcSENTIMENTO" onclick="selSentimeto(this)">
-                                <div class="opcSENTIMENTOtext">CONFIANÇA</div>
-                            </div>
-                        </div>
-                        <div style="display: flex;align-items: center;/* justify-content: end; *//* width: 100%; *//* margin-right: 20%; */">
-                            <div class="opcSENTIMENTO" onclick="selSentimeto(this)">
-                                <div class="opcSENTIMENTOtext">CONHECIMENTO</div>
-                            </div>
-                        </div>
-                        <div style="display: flex;align-items: center;/* justify-content: start; *//* width: 100%; *//* margin-left: 20%; */">
-                            <div class="opcSENTIMENTO" onclick="selSentimeto(this)">
-                                <div class="opcSENTIMENTOtext">PODER</div>
-                            </div>
-                        </div>
-                        <div style="display: flex;align-items: center;/* justify-content: end; *//* width: 100%; *//* margin-right: 20%; */">
-                            <div class="opcSENTIMENTO" onclick="selSentimeto(this)">
-                                <div class="opcSENTIMENTOtext">RESPEITO</div>
-                            </div>
-                        </div>
-                        <div style="width: 100%;display: flex;flex-direction: column;justify-content: center;align-items: center;margin-top: 20px;height: 60%;">
-                            <div class="input_Sentimento">
-                                <div class="label_Sentimento">OUTROS:</div>
-                                <input type="text" class="input-field_Sentimento" placeholder="Informe aqui...">
-                            </div>
-                            <div style="margin-top: 20px;">
-                                <button style="background: #A0F0FF;padding: 10px 30px;font-size: 16px;border-radius: 56px;" onclick="avancar()">Avançar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tela">
-            <div class="tagQuiz">QUIZ</div>
-            <div style="display: grid;grid-template-columns: 50% 50%;height: 100%;overflow: hidden;">
-                <div style="display: flex;align-items: center;flex-direction: column;">
-                    <div style="height: 20%;display: flex;align-items: center;justify-content: start;width: 100%;padding-left: 50%;">
-                        <img src="./imagens/Logo_digital_perfumes.png" style="max-width: 100%; height: auto;margin-right: 30px;">
-                        <div style="width: 202.11px; height: 50.06px;background: #A0F0FF; border-radius: 57.28px; justify-content: center; align-items: center; display: inline-flex">
-                          <div style="color: black; font-size: 13.91px; font-family: Sora; font-weight: 600; word-wrap: break-word">Perfume</div>
-                        </div>
-                    </div>
-                    <div style="width: 100%;height: 40%;display: flex;align-items: start;flex-direction: column;">
-                        <span style="color: white;padding-left: 25%;text-align: start;font-size: 94px;font-family: Labil Grotesk;font-weight: 600;line-height: 94px;word-wrap: break-word;max-width: 620px;">Qual é o <span style="color: #A0F0FF; font-size: 94px; font-family: Labil Grotesk; font-weight: 600; line-height: 94px; word-wrap: break-word">perfume</span> que você mais gosta?</span>
-                    </div>
-                    <div style="height: 40%;width: 100%;">
-                        <div style="width: 300px;height: 42px;background: #101010;border-radius: 58.22px;display: flex;justify-content: space-between;align-items: center;padding: 5px 20px;margin-top: 10%;margin-left: 25%;">
-                            <div style="color: white; font-size: 13.91px; font-family: Sora; font-weight: 600; word-wrap: break-word">Escolha</div>
-                            <img src="./imagens/seta.png">
-                        </div>
-                    </div>
-                </div>
-                <div style="display: flex;align-items: center;justify-content: center;">
-                    <div style="width: 710px; height: 620px;padding: 40px 0px;background: #101010; border-radius: 31.52px;z-index: 2;display: flex;align-items: center;justify-content: center;gap: 15px;flex-direction: column;">
-                        <div style="height: 80%;width: 100%;display: flex;align-items: center;justify-content: center;flex-direction: row;">
-                            <div style="width: 40%;display: flex;align-items: center;justify-content: end;">
-                                <div style="width: 217.86px;height: 217.86px;background: #A0F0FF;border-radius: 23px;display: flex;align-items: center;justify-content: center;/* margin-left: 24px; */">
-                                    <div data-svg-wrapper="">
-                                        <svg width="73" height="110" viewBox="0 0 73 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M72.029 71.7033C64.1008 61.1881 37.3424 25.699 37.3279 25.6793C37.3064 25.665 36.014 23.8325 33.7783 24.6063L30.8745 25.5545L28.8669 19.4063L31.8324 18.438C33.4701 17.9032 34.3765 16.1793 33.8568 14.5877L30.0926 3.05988C29.5729 1.46827 27.8238 0.611485 26.186 1.14627L2.46214 8.89297C0.824405 9.42775 -0.081997 11.1517 0.43772 12.7433L4.20197 24.2711C4.72168 25.8627 6.47078 26.7195 8.10851 26.1847L11.074 25.2163L13.0816 31.3645L10.1782 32.3126C8.85777 32.7163 7.93611 33.9426 7.94521 35.2863L7.0923 92.9072C7.07705 93.8977 7.56559 94.7821 8.27395 95.3166L25.7662 108.723C25.7926 108.734 27.027 109.742 28.6721 109.194L64.2191 97.5864C64.673 97.4396 65.0883 97.1941 65.4335 96.8686C65.7787 96.5431 66.0447 96.1462 66.2112 95.708C66.3201 95.4197 65.9556 96.5969 72.4969 74.3455C72.7727 73.4216 72.5713 72.4187 72.029 71.7033ZM14.1358 37.3988L20.0622 35.4636L23.2572 85.4482L13.3768 88.6745L14.1358 37.3988ZM33.585 31.0479L64.4579 71.9947L54.5775 75.221L27.6586 32.9831L33.585 31.0479ZM48.464 77.2173L29.3709 83.4519L26.7994 43.2241L48.464 77.2173ZM23.6568 91.6962L24.169 99.7075L16.6857 93.9725L23.6568 91.6962ZM29.7702 89.6999L51.8289 82.497L58.5586 93.0565L30.569 102.196L29.7702 89.6999ZM62.2567 87.2704L57.9424 80.5007L64.9132 78.2245L62.2567 87.2704ZM7.30995 13.6885L25.1029 7.87844L26.985 13.6424L9.19207 19.4524L7.30995 13.6885ZM17.0052 23.2796L22.9361 21.3429L24.9437 27.4911L19.0128 29.4278L17.0052 23.2796Z" fill="black"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="width: 20%;height: 100%;display: flex;flex-direction: column;justify-content: start;">
-                                <div style="width: 300px;height: 292px;transform: rotate(17deg);transform-origin: top left;background: #3EE0FF;border-radius: 23px;display: flex;align-items: center;justify-content: center;">
-                                    <div data-svg-wrapper="">
-                                        <svg width="134" height="172" viewBox="0 0 134 172" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M129.424 69.3112L101.3 59.7488L105.092 48.5954L110.64 50.4817C113.81 51.5596 117.258 49.8505 118.341 46.6638L126.057 23.9703C127.14 20.7835 125.449 17.3273 122.279 16.2493L77.1262 0.897598C73.9558 -0.180318 70.5083 1.52878 69.4248 4.71552L61.7091 27.409C60.6256 30.5958 62.3169 34.052 65.4872 35.13L71.0353 37.0163L67.2431 48.1698L39.1183 38.6074C35.9479 37.5294 32.5004 39.2385 31.4169 42.4253L0.554337 133.198C-0.529146 136.385 1.16215 139.841 4.33252 140.919L94.6387 171.623C97.809 172.701 101.257 170.992 102.34 167.805L133.203 77.0322C134.286 73.8454 132.595 70.3892 129.424 69.3112ZM78.9427 14.388L112.616 25.8367L108.823 36.9913L75.1502 25.5426L78.9427 14.388ZM82.5148 40.9193L93.6121 44.6924L89.82 55.8458L78.7227 52.0728L82.5148 40.9193ZM92.8221 158.133L13.9955 131.332L40.9348 52.0977L119.761 78.8986L92.8221 158.133Z" fill="black"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="width: 40%;display: flex;align-items: end;justify-content: start;height: 70%;">
-                                <div style="width: 251.96px;height: 249.96px;background: #87FFF9;border-radius: 23px;display: flex;align-items: center;justify-content: center;">
-                                    <div data-svg-wrapper="">
-                                        <svg width="94" height="144" viewBox="0 0 94 144" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.9312 0.0448888L76.7632 0.202L76.64 46.3255L68.2354 46.3031L68.2095 56.0336L93.4232 56.1009L93.1901 143.367L0.739868 143.12L0.972912 55.854L26.1866 55.9214L26.2126 46.1909L17.808 46.1684L17.9312 0.0448888ZM34.6172 46.2133L34.5912 55.9438L59.8049 56.0111L59.8309 46.2806L34.6172 46.2133ZM68.2578 37.9171L68.3362 8.5655L26.3134 8.45328L26.235 37.8049L34.6396 37.8274L34.6956 16.8617L59.9093 16.929L59.8533 37.8947L68.2578 37.9171ZM51.4487 37.8723L51.4823 25.2925L43.0777 25.2701L43.0441 37.8498L51.4487 37.8723ZM9.35509 64.2624L9.16683 134.757L84.8079 134.959L84.9962 64.4644L9.35509 64.2624ZM17.7373 72.6708L76.5692 72.8279L76.5042 97.1994C76.4609 113.41 63.2559 126.515 47.0098 126.472C30.7637 126.428 17.6289 113.252 17.6722 97.0423L17.7373 72.6708ZM26.1194 81.0792L26.0767 97.0648C26.0458 108.643 35.4278 118.055 47.0322 118.086C58.6366 118.117 68.0687 108.756 68.0996 97.177L68.1423 81.1914L26.1194 81.0792Z" fill="black"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="height: 20%; width: 100%;display: flex;flex-direction: column;justify-content: center;align-items: center;margin-top: 100px;">
-                            <div class="input_Sentimento">
-                                <input type="text" class="input-field_Sentimento" placeholder="Informe aqui...">
-                            </div>
-                            <div style="margin-top: 20px;">
-                                <button style="background: #A0F0FF; padding: 15px 30px; font-size: 20px; border-radius: 56px;"
-                                    onclick="avancar()">Avançar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tela">
-            <div class="tagQuiz">QUIZ</div>
-            <div style="display: grid;grid-template-columns: 50% 50%;height: 100%;overflow: hidden;">
-                <div style="display: flex;align-items: center;flex-direction: column;">
-                    <div style="height: 20%;display: flex;align-items: center;justify-content: start;width: 100%;padding-left: 50%;">
-                        <img src="./imagens/Logo_digital_perfumes.png" style="max-width: 100%; height: auto;margin-right: 30px;">
-                        <div style="width: 202.11px; height: 50.06px;background: #A0F0FF; border-radius: 57.28px; justify-content: center; align-items: center; display: inline-flex">
-                          <div style="color: black; font-size: 13.91px; font-family: Sora; font-weight: 600; word-wrap: break-word">Descubra</div>
-                        </div>
-                    </div>
-                    <div style="width: 100%;height: 40%;display: flex;align-items: start;flex-direction: column;">
-                       <span style="color: white;padding-left: 25%;text-align: start;font-size: 94px;font-family: Labil Grotesk;font-weight: 600;line-height: 94px;word-wrap: break-word;max-width: 620px;z-index: 2;">Descubra Seu Perfume Perfeito!</span>
-                       <span style="color: white;padding-left: 25%;text-align: start;font-size: 40px;font-family: Labil Grotesk;font-weight: 600;z-index: 2;word-wrap: break-word;max-width: 620px;">Estamos a um passo de revelar o aroma que combina perfeitamente com você.</span>
-                    </div>
-                    <div style="height: 40%;width: 100%;">
-                        <div style="width: 300px;height: 42px;background: #101010;border-radius: 58.22px;display: flex;justify-content: space-between;align-items: center;padding: 5px 20px;margin-top: 10%;margin-left: 25%;">
-                            <div style="color: white; font-size: 13.91px; font-family: Sora; font-weight: 600; word-wrap: break-word">Informe</div>
-                            <img src="./imagens/seta.png">
-                        </div>
-                    </div>
-                </div>
-                <div style="display: flex;align-items: center;justify-content: center;">
-                    <div style="width: 710px; height: 620px;padding: 40px 0px;background: #101010; border-radius: 31.52px;z-index: 2;display: flex;align-items: center;justify-content: center;gap: 15px;flex-direction: column;">
-                        <div style="width: 559px; height: 143px">
-                            <span style="color: white; font-size: 36px; font-family: Labil Grotesk; font-weight: 600; line-height: 36px; word-wrap: break-word">Para receber o resultado exclusivo</span><span style="color: white; font-size: 36px; font-family: Labil Grotesk; font-weight: 400; line-height: 36px; word-wrap: break-word"> do seu Perfume Perfeito, insira seu e-mail e número de telefone abaixo:</span>
-                        </div>
+      <div class="tela">
+        <div class="tagQuiz">QUIZ</div>
+        <div style="height: 100%;display: grid;grid-template-rows: auto min-content;">
+          <div id="divGeralClimaAt">
+            <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoGrid" />
+            <!-- <div id="textoTa" class="textTclima" style="background: #a0f0ff;border-radius: 50px;padding: 12px 25px;font-size: 18px;color: #000;display: inline-block;">Clima</div> -->
 
-                        <div style="width: 100%;display: flex;flex-direction: column;justify-content: center;align-items: center;margin-top: 25px;">
-                            <div class="input_Sentimento">
-                                <div class="label_Sentimento" style="width: 90px;">E-mail</div>
-                                <input type="text" class="input-field_Sentimento" placeholder="Informe aqui...">
-                            </div>
-
-                            <div class="input_Sentimento" style="margin-top: 20px;">
-                                <div class="label_Sentimento" style="width: 90px;">Whatsapp</div>
-                                <input type="text" class="input-field_Sentimento" placeholder="Informe aqui...">
-                            </div>
-                            <div style="margin-top: 20px;">
-                                <button style="background: #A0F0FF; padding: 15px 30px; font-size: 20px; border-radius: 56px;"
-                                    onclick="avancar()">Avançar</button>
-                            </div>
-                        </div>
-
+            <div id="divDual" style="display: flex;align-items: center;justify-content: center;flex-direction: column;height: 100%;">
+                <div id="divAjuste">
+                    <div id="divImgOca" style="display: flex;align-items: center;padding: 20px;">
+                        <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoDesktok" />
+                        <div id="textT" style="background: #a0f0ff;border-radius: 50px;padding: 12px 25px;font-size: 18px;color: #000;display: inline-block;">Clima</div>
                     </div>
+
+                    <div class="texto textoDesk" style="margin: 20px">Em qual o clima você prefere usar seu <span style="color: #a0f0ff">perfume?</span></div>
                 </div>
+
+                <div id="divFora" class="divForaTempo" style="
+                  background-color: #101010;
+                  border-radius: 18px;
+                  padding: 20px;
+                "
+              >
+                <div id="divDadosOcasiao"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: row;
+                    gap: 20px;
+                    width: 100%;
+                  "
+                >
+                <div style="display: flex;gap: 20px;">
+                    <div
+                class="opcCLIMA"
+                style="background: #592200"
+                onclick="avancar()"
+              >
+                <div
+                  data-svg-wrapper=""
+                  style="position: relative; width: 50px; height: 50px"
+                >
+                  <svg
+                    width="175"
+                    height="175"
+                    viewBox="0 0 175 175"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="width: 50px; height: 50px"
+                  >
+                    <path
+                      d="M138.567 94.0778C138.353 93.4921 137.946 92.9969 137.413 92.6742C136.88 92.3515 136.252 92.2207 135.634 92.3035C135.016 92.3863 134.445 92.6778 134.016 93.1295C133.586 93.5812 133.324 94.1662 133.272 94.7874C132.523 100.434 130.121 105.733 126.367 110.017C133.245 79.2302 113.239 56.9861 113.102 56.8224C97.9271 38.8634 102.785 14.6269 102.84 14.3812C102.951 13.8478 102.901 13.2934 102.697 12.7882C102.493 12.283 102.144 11.8496 101.694 11.5427C101.243 11.2359 100.71 11.0718 100.165 11.0718C99.62 11.0718 99.0874 11.2359 98.6367 11.5427C80.3775 23.9612 73.2539 44.1037 70.4973 56.8497C63.2373 44.595 48.3897 41.3471 48.1986 41.3198C47.6289 41.199 47.0355 41.2637 46.5051 41.5043C45.9748 41.7449 45.5353 42.1489 45.251 42.6571C44.9709 43.1686 44.8596 43.7554 44.9332 44.3339C45.0067 44.9123 45.2612 45.4527 45.6604 45.8778C48.1986 48.5252 49.345 53.6018 48.881 60.1795C48.6408 63.1472 47.7758 66.0306 46.3427 68.6404C38.234 83.6237 33.9496 100.377 33.8696 117.414C33.8973 122.101 34.8431 126.737 36.6535 131.06C48.1168 158.627 70.6065 163.921 86.1637 163.921C89.8013 163.927 93.4336 163.644 97.0264 163.075C100.219 162.612 103.332 161.712 106.279 160.401C154.124 138.621 138.731 94.5145 138.567 94.0778Z"
+                      fill="#FF8A42"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="opcCLIMA"
+                style="background: #00394e"
+                onclick="avancar()"
+              >
+                <div
+                  data-svg-wrapper=""
+                  style="position: relative; width: 50px; height: 50px"
+                >
+                  <svg
+                    width="149"
+                    height="149"
+                    viewBox="0 0 149 149"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="width: 50px; height: 50px"
+                  >
+                    <g clip-path="url(#clip0_48_333)">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M148.391 89.3083C149.275 94.3084 145.936 99.0767 140.938 99.9604L123.832 102.982L129.767 119.306C131.502 124.077 129.041 129.352 124.268 131.087C123.262 131.455 122.199 131.643 121.128 131.643C117.371 131.643 113.845 129.324 112.487 125.59L103.954 102.121L83.6942 90.4238V113.818L99.7504 132.943C103.017 136.832 102.511 142.632 98.6213 145.895C96.9683 147.288 94.8759 148.051 92.7145 148.049C90.0917 148.049 87.4894 146.932 85.6705 144.766L74.5006 131.464L63.3293 144.766C60.0667 148.655 54.2656 149.161 50.3785 145.895C46.4884 142.632 45.9828 136.832 49.2494 132.943L65.3068 113.818V90.4238L45.0459 102.121L36.5134 125.59C35.1539 129.324 31.6259 131.643 27.8715 131.643C26.8292 131.643 25.7679 131.466 24.731 131.088C19.9587 129.353 17.4972 124.078 19.2322 119.307L25.1675 102.982L8.062 99.9604C3.06329 99.0767 -0.275118 94.3084 0.608612 89.3083C1.49091 84.3081 6.25805 80.9697 11.2593 81.8535L35.8521 86.1977L56.1129 74.5003L35.8521 62.803L11.2593 67.1469C10.7186 67.2417 10.182 67.288 9.65047 67.288C5.2752 67.288 1.3961 64.1516 0.608612 59.6924C-0.275118 54.6923 3.06329 49.9225 8.062 49.0402L25.1675 46.0176L19.2322 29.6944C17.4972 24.9221 19.9587 19.6467 24.731 17.9117C29.5008 16.1768 34.7773 18.6383 36.5137 23.4106L45.0462 46.8798L65.3068 58.5768V35.181L49.2491 16.0564C45.9825 12.1689 46.4882 6.36925 50.3782 3.1041C54.2656 -0.161043 60.0667 0.344603 63.329 4.23462L74.5003 17.5365L85.6702 4.23462C88.9339 0.344603 94.7313 -0.161043 98.6213 3.1041C102.511 6.36925 103.017 12.1692 99.7504 16.0564L83.6942 35.1813V58.5771L103.954 46.88L112.487 23.4109C114.222 18.6386 119.496 16.177 124.268 17.912C129.041 19.647 131.502 24.9221 129.767 29.6947L123.832 46.0179L140.938 49.0405C145.936 49.9228 149.275 54.6926 148.391 59.6927C147.603 64.1507 143.724 67.2883 139.349 67.2883C138.818 67.2883 138.281 67.2423 137.74 67.1472L113.148 62.8033L92.8868 74.5006L113.148 86.198L137.74 81.8537C142.741 80.9697 147.508 84.3081 148.391 89.3083Z"
+                        fill="#00BBFF"
+                      ></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_48_333">
+                        <rect
+                          width="147.097"
+                          height="147.097"
+                          fill="white"
+                          transform="translate(0.951172 0.95166)"
+                        ></rect>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
             </div>
+            </div>
+            </div>
+          </div>
+          </div>
+          <div style="background-color: #101010;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 50px;
+              padding: 10px;
+              width: 183px;
+              height: 15px;
+              border-radius: 63px;
+              margin: 0 auto;
+              margin-bottom: 53px;
+              margin-top: 20px;
+            "
+          >
+            <p style="font-size: 12px; font-weight: 900">Escolha</p>
+            <img src="./imagens/seta.png" alt="Seta branca" />
+          </div>
         </div>
-        <div class="tela">
-            <div style="height: 100%;width: 100%;display: flex;align-items: center;justify-content: center;flex-direction: column;gap: 50px;">
-                <div style="height: 20%;display: flex;align-items: center;justify-content: center;width: 100%;/* padding-left: 50%; */">
-                    <img src="./imagens/Logo_digital_perfumes.png" style="max-width: 100%; height: auto;margin-right: 30px;">
-                    <div style="width: 202.11px; height: 50.06px;background: #A0F0FF; border-radius: 57.28px; justify-content: center; align-items: center; display: inline-flex">
-                      <div style="color: black; font-size: 13.91px; font-family: Sora; font-weight: 600; word-wrap: break-word">Resultado</div>
+      </div>
+      <div class="tela">
+        <div class="tagQuiz">QUIZ</div>
+        <div style="height: 100%;display: grid;grid-template-rows: auto min-content;">
+          <div id="divGeralClimaAt">
+            <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoGrid" />
+            <!-- <div id="textoTa" style="background: #a0f0ff;border-radius: 50px;padding: 12px 25px;font-size: 18px;color: #000;display: inline-block;">Sexo</div> -->
+
+            <div id="divDual" style="display: flex;align-items: center;justify-content: center;flex-direction: column;height: 100%;">
+                <div id="divAjuste">
+                    <div id="divImgOca" style="display: flex;align-items: center;padding: 20px;">
+                        <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoDesktok" />
+                        <div id="textT" style="background: #a0f0ff;border-radius: 50px;padding: 12px 25px;font-size: 18px;color: #000;display: inline-block;">Sexo</div>
                     </div>
+
+                    <div class="texto textoDesk" style="margin: 20px">Qual é o seu <span style="color: #a0f0ff">sexo?</span></div>
                 </div>
-                <div class="texto" style="margin: 10px;">O seu perfume perfeito é o</div>
-                <div style="width: 606px;height: 152.28px;background: #101010;border-radius: 9.37px;display: flex;align-items: center;justify-content: center;flex-direction: row;">
+
+                <div id="divFora" class="divForaSexo" style="
+                  background-color: #101010;
+                  border-radius: 18px;
+                  padding: 20px;
+                "
+              >
+                <div id="divDadosOcasiao"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: row;
+                    gap: 20px;
+                    width: 100%;
+                  "
+                >
+                <div style="display: flex;gap: 20px;">
+                    
+                    <div
+                    class="opcSEXO"
+                    style="background: #ebfcff"
+                    onclick="avancar()"
+                  >
                     <div data-svg-wrapper="">
-                        <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.78301 9.00578L0.409285 3.58285C0.136241 3.30759 3.05176e-05 2.97093 3.05176e-05 2.57292C3.05176e-05 2.17494 0.13628 1.83844 0.409285 1.56322L1.23845 0.726227C1.51106 0.451086 1.84472 0.313477 2.23899 0.313477C2.63325 0.313477 2.96675 0.451086 3.23979 0.726227L10.4492 7.99026C10.722 8.26552 10.8584 8.60214 10.8584 9.00019C10.8584 9.39825 10.722 9.73459 10.4492 10.01L3.23983 17.274C2.96679 17.5493 2.63333 17.6869 2.23902 17.6869C1.84472 17.6869 1.5111 17.5493 1.23848 17.274L0.409324 16.4372C0.13628 16.1621 6.77109e-05 15.8273 6.77109e-05 15.4329C6.77109e-05 15.0387 0.136319 14.7002 0.409324 14.4176L5.78301 9.00578Z" fill="#A0F0FF"></path>
-                        </svg>
+                      <svg
+                        width="78"
+                        height="78"
+                        viewBox="0 0 78 78"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style="height: 50px; width: 50px"
+                      >
+                        <path
+                          d="M42.1925 0V8.78627H63.001L47.555 24.2323C42.5971 20.5541 36.4588 18.3775 29.8114 18.3775C13.347 18.3775 0 31.7244 0 48.1888C0 64.653 13.347 78 29.8112 78C46.2755 78 59.6225 64.653 59.6225 48.1888C59.6225 41.5414 57.4459 35.4029 53.7677 30.445L69.2137 14.9992V35.8076H78V0H42.1925ZM29.8112 68.1817C18.7694 68.1817 9.8181 59.2305 9.8181 48.1886C9.8181 37.1467 18.7694 28.1955 29.8112 28.1955C40.8531 28.1955 49.8044 37.1467 49.8044 48.1886C49.8044 59.2306 40.8531 68.1817 29.8112 68.1817Z"
+                          fill="#101010"
+                        ></path>
+                      </svg>
                     </div>
-                    <div style="width: 367.04px; height: 51.73px; text-align: center; color: white; font-size: 52.77px; font-family: Labil Grotesk; font-weight: 600; line-height: 52.77px; word-wrap: break-word">Assad Lataffa</div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    gap: 20px;
+                  "
+                >
+                  <div
+                    class="opcSEXO"
+                    style="background: #a0f0ff"
+                    onclick="avancar()"
+                  >
                     <div data-svg-wrapper="">
-                        <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.07539 9.00578L10.4491 3.58285C10.7222 3.30759 10.8584 2.97093 10.8584 2.57292C10.8584 2.17494 10.7221 1.83844 10.4491 1.56322L9.61995 0.726227C9.34734 0.451086 9.01368 0.313477 8.61941 0.313477C8.22515 0.313477 7.89165 0.451086 7.6186 0.726227L0.409216 7.99026C0.136406 8.26552 0 8.60214 0 9.00019C0 9.39825 0.136367 9.73459 0.409216 10.01L7.61857 17.274C7.89161 17.5493 8.22507 17.6869 8.61937 17.6869C9.01368 17.6869 9.3473 17.5493 9.61991 17.274L10.4491 16.4372C10.7221 16.1621 10.8583 15.8273 10.8583 15.4329C10.8583 15.0387 10.7221 14.7002 10.4491 14.4176L5.07539 9.00578Z" fill="#A0F0FF"></path>
-                        </svg>
+                      <svg
+                        width="54"
+                        height="94"
+                        viewBox="0 0 54 94"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style="height: 50px; width: 50px"
+                      >
+                        <path
+                          d="M44.1607 67.3743H31.5779V54.641C31.5779 54.5059 31.5502 54.3804 31.5364 54.2476C44.2713 52.0571 54 40.8194 54 27.3205C54.0002 12.2554 41.8892 0 27.0002 0C12.1122 0 0 12.2554 0 27.3205C0 40.8196 9.72952 52.0571 22.463 54.2476C22.4515 54.3804 22.4233 54.5061 22.4233 54.641V67.3743H9.83992C7.31219 67.3743 5.26438 69.4482 5.26438 72.0044C5.26438 74.5615 7.31219 76.6354 9.83992 76.6354H22.4245V89.3699C22.4245 91.9271 24.4734 94 27 94C29.527 94 31.5779 91.9261 31.5779 89.3699V76.6354H44.1607C46.689 76.6354 48.7376 74.5617 48.7376 72.0044C48.7376 69.4484 46.6892 67.3743 44.1607 67.3743ZM9.15303 27.3205C9.15303 17.3626 17.1591 9.2603 27.0002 9.2603C36.8419 9.2603 44.8491 17.3616 44.8491 27.3205C44.8491 37.2794 36.8419 45.3795 27.0002 45.3795C17.1603 45.3797 9.15303 37.2784 9.15303 27.3205Z"
+                          fill="#101010"
+                        ></path>
+                      </svg>
                     </div>
-                </div>
-                <div>
-                    <div class="buttonWhatsapp" onclick="openWhatsApp()">
-                        <div style="color: white; font-size: 19.91px; font-family: Sora; font-weight: 600; word-wrap: break-word">Nos chame no Whatsapp</div>
-                        <div data-svg-wrapper="">
-                            <svg width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.2696 0.0395508H17.2614C8.18529 0.0395508 0.804688 7.42221 0.804688 16.5003C0.804688 20.1011 1.96517 23.4386 3.93841 26.1484L1.88698 32.2636L8.2141 30.241C10.817 31.9652 13.9219 32.9611 17.2696 32.9611C26.3457 32.9611 33.7263 25.5764 33.7263 16.5003C33.7263 7.42427 26.3457 0.0395508 17.2696 0.0395508ZM26.8477 23.2842C26.4506 24.4056 24.8745 25.3357 23.6173 25.6073C22.7572 25.7904 21.6338 25.9365 17.8519 24.3686C13.0145 22.3645 9.89927 17.4489 9.65648 17.13C9.42397 16.811 7.70176 14.5271 7.70176 12.165C7.70176 9.80285 8.90134 8.65266 9.38487 8.15883C9.78199 7.75349 10.4384 7.5683 11.068 7.5683C11.2717 7.5683 11.4548 7.57859 11.6194 7.58682C12.103 7.6074 12.3458 7.6362 12.6647 8.39957C13.0618 9.35636 14.0289 11.7185 14.1441 11.9613C14.2614 12.2041 14.3787 12.5333 14.2141 12.8522C14.0597 13.1814 13.9239 13.3275 13.6811 13.6074C13.4383 13.8872 13.2079 14.1012 12.9651 14.4016C12.7429 14.6629 12.4918 14.9427 12.7717 15.4263C13.0515 15.8995 14.0186 17.4777 15.4424 18.7452C17.2799 20.381 18.7696 20.9036 19.3025 21.1258C19.6996 21.2904 20.1729 21.2513 20.463 20.9427C20.8313 20.5456 21.286 19.8871 21.749 19.239C22.0782 18.774 22.4938 18.7164 22.93 18.881C23.3745 19.0353 25.7263 20.1978 26.2099 20.4386C26.6934 20.6814 27.0123 20.7966 27.1296 21.0003C27.2448 21.204 27.2448 22.1608 26.8477 23.2842Z" fill="#A0F0FF"></path>
-                            </svg>
-                        </div>
+                  </div>
+  
+                  <div
+                    class="opcSEXO"
+                    style="background: #ea94ff"
+                    onclick="avancar()"
+                  >
+                    <div data-svg-wrapper="">
+                      <svg
+                        width="73"
+                        height="96"
+                        viewBox="0 0 73 96"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style="height: 50px; width: 50px"
+                      >
+                        <path
+                          d="M48.7996 1V6.94861H60.8806L45.9181 21.9111C41.0266 17.9605 34.9814 15.8127 28.6051 15.8127C21.2281 15.8127 14.2927 18.6854 9.07623 23.9018C-1.69208 34.6701 -1.69208 52.1912 9.07623 62.9593C13.5849 67.468 19.3782 70.2241 25.6307 70.8892V78.5627H15.142V84.5113H25.6307V95H31.5793V84.5113H42.068V78.5627H31.5793V70.8892C37.8315 70.2239 43.6252 67.468 48.1337 62.9593C58.1913 52.9017 58.8535 36.9535 50.1231 26.1185L65.0867 11.1549V23.2359H71.0353V1H48.7996ZM43.9274 58.753C39.8345 62.8458 34.393 65.0998 28.6049 65.0998C22.8167 65.0998 17.3752 62.8458 13.2824 58.753C4.83338 50.304 4.83338 36.5569 13.2824 28.1081C17.3752 24.0153 22.8167 21.7613 28.6049 21.7613C34.393 21.7613 39.8344 24.0153 43.9274 28.1081C52.3762 36.5569 52.3762 50.304 43.9274 58.753Z"
+                          fill="black"
+                          stroke="black"
+                          stroke-width="2"
+                        ></path>
+                      </svg>
                     </div>
-                </div>
+                  </div>
             </div>
+            </div>
+            </div>
+          </div>
+          </div>
+          <div style="background-color: #101010;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 50px;
+              padding: 10px;
+              width: 183px;
+              height: 15px;
+              border-radius: 63px;
+              margin: 0 auto;
+              margin-bottom: 53px;
+              margin-top: 20px;
+            "
+          >
+            <p style="font-size: 12px; font-weight: 900">Escolha</p>
+            <img src="./imagens/seta.png" alt="Seta branca" />
+          </div>
         </div>
+      </div>
+      <div class="tela">
+        <div class="tagQuiz">QUIZ</div>
+        <div style="height: 100%;display: grid;grid-template-rows: auto min-content;">
+          <div id="divGeralClimaAt">
+            <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoGrid" />
+            <!-- <div id="textoTa" style="background: #a0f0ff;border-radius: 50px;padding: 12px 25px;font-size: 18px;color: #000;display: inline-block;">Sentimento</div> -->
+
+            <div id="divDual" style="display: flex;align-items: center;justify-content: center;flex-direction: column;height: 100%;">
+                <div id="divAjuste">
+                    <div id="divImgOca" style="display: flex;align-items: center;padding: 20px;">
+                        <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoDesktok" />
+                        <div id="textT" style="background: #a0f0ff;border-radius: 50px;padding: 12px 25px;font-size: 18px;color: #000;display: inline-block;">Sentimento</div>
+                    </div>
+
+                    <div class="texto textoDesk" style="margin: 20px">Que <span style="color: #a0f0ff">sentimento</span> você escolheria transmitir?</div>
+                </div>
+
+                <div id="divFora" style="
+                  background-color: #101010;
+                  border-radius: 18px;
+                  padding: 20px;
+                "
+              >
+                <div id="divDadosOcasiao"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    gap: 20px;
+                    width: 100%;
+                  "
+                >
+                  <div id="divOcasiao">
+                    <div onclick="avancar()" class="opcOCUSO">CONFIANÇA</div>
+                    <div onclick="avancar()" class="opcOCUSO">PODER</div>
+                  </div>
+
+                  <div id="divOcasiao">
+                    <div onclick="avancar()" class="opcOCUSO">RESPEITO</div>
+                    <div onclick="avancar()" class="opcOCUSO">CONHECIMENTO</div>
+                  </div>
+
+                  <div style="display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 20px;">
+                    <div id="labelIdade" style="width: 90px !important;">OUTROS</div>
+                    <input type="text" placeholder="Informe aqui" id="inputIdade" />
+                  </div>
+                </div>
+              </div>
+          </div>
+          </div>
+          <div style="background-color: #101010;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 50px;
+              padding: 10px;
+              width: 183px;
+              height: 15px;
+              border-radius: 63px;
+              margin: 0 auto;
+              margin-bottom: 53px;
+              margin-top: 20px;
+            "
+          >
+            <p style="font-size: 12px; font-weight: 900">Escolha</p>
+            <img src="./imagens/seta.png" alt="Seta branca" />
+          </div>
+        </div>
+      </div>
+      <div class="tela">
+        <div class="tagQuiz">QUIZ</div>
+        <div style="height: 100%;display: grid;grid-template-rows: auto min-content;">
+          <div id="divGeralClima">
+            <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoGrid" />
+
+            <div id="divDua" style="display: flex;align-items: center;justify-content: center;flex-direction: column;height: 100%;">
+                <div id="divAjuste">
+                    <div id="divImgOca" style="display: flex;align-items: center;padding: 20px;">
+                        <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoDesktok" />
+                        <div id="textT" style="background: #a0f0ff;border-radius: 50px;padding: 12px 25px;font-size: 18px;color: #000;display: inline-block;">Sentimento</div>
+                    </div>
+
+                    <div class="texto textoDesk" style="margin: 20px">Qual é o <span style="color: #a0f0ff">perfume</span> que você mais gosta?</div>
+                </div>
+
+                <div id="divQualPer"
+              style="
+                width: 710px;
+                height: 620px;
+                padding: 40px 0px;
+                background: #101010;
+                border-radius: 31.52px;
+                z-index: 2;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 15px;
+                flex-direction: column;
+              "
+            >
+            <div id="divQualPerfume">
+                <div id="labelIdade" style="width: 55px !important;">Perfume</div>
+                <input type="text" placeholder="Informe aqui" id="inputIdade" />
+              </div>
+              <div id="hideQual"
+                style="
+                  height: 80%;
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-direction: row;
+                "
+              >
+                <div
+                  style="
+                    width: 40%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: end;
+                  "
+                >
+                  <div
+                    style="
+                      width: 217.86px;
+                      height: 217.86px;
+                      background: #a0f0ff;
+                      border-radius: 23px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center; /* margin-left: 24px; */
+                    "
+                  >
+                    <div data-svg-wrapper="">
+                      <svg
+                        width="73"
+                        height="110"
+                        viewBox="0 0 73 110"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M72.029 71.7033C64.1008 61.1881 37.3424 25.699 37.3279 25.6793C37.3064 25.665 36.014 23.8325 33.7783 24.6063L30.8745 25.5545L28.8669 19.4063L31.8324 18.438C33.4701 17.9032 34.3765 16.1793 33.8568 14.5877L30.0926 3.05988C29.5729 1.46827 27.8238 0.611485 26.186 1.14627L2.46214 8.89297C0.824405 9.42775 -0.081997 11.1517 0.43772 12.7433L4.20197 24.2711C4.72168 25.8627 6.47078 26.7195 8.10851 26.1847L11.074 25.2163L13.0816 31.3645L10.1782 32.3126C8.85777 32.7163 7.93611 33.9426 7.94521 35.2863L7.0923 92.9072C7.07705 93.8977 7.56559 94.7821 8.27395 95.3166L25.7662 108.723C25.7926 108.734 27.027 109.742 28.6721 109.194L64.2191 97.5864C64.673 97.4396 65.0883 97.1941 65.4335 96.8686C65.7787 96.5431 66.0447 96.1462 66.2112 95.708C66.3201 95.4197 65.9556 96.5969 72.4969 74.3455C72.7727 73.4216 72.5713 72.4187 72.029 71.7033ZM14.1358 37.3988L20.0622 35.4636L23.2572 85.4482L13.3768 88.6745L14.1358 37.3988ZM33.585 31.0479L64.4579 71.9947L54.5775 75.221L27.6586 32.9831L33.585 31.0479ZM48.464 77.2173L29.3709 83.4519L26.7994 43.2241L48.464 77.2173ZM23.6568 91.6962L24.169 99.7075L16.6857 93.9725L23.6568 91.6962ZM29.7702 89.6999L51.8289 82.497L58.5586 93.0565L30.569 102.196L29.7702 89.6999ZM62.2567 87.2704L57.9424 80.5007L64.9132 78.2245L62.2567 87.2704ZM7.30995 13.6885L25.1029 7.87844L26.985 13.6424L9.19207 19.4524L7.30995 13.6885ZM17.0052 23.2796L22.9361 21.3429L24.9437 27.4911L19.0128 29.4278L17.0052 23.2796Z"
+                          fill="black"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    width: 20%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: start;
+                  "
+                >
+                  <div
+                    style="
+                      width: 300px;
+                      height: 292px;
+                      transform: rotate(17deg);
+                      transform-origin: top left;
+                      background: #3ee0ff;
+                      border-radius: 23px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <div data-svg-wrapper="">
+                      <svg
+                        width="134"
+                        height="172"
+                        viewBox="0 0 134 172"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M129.424 69.3112L101.3 59.7488L105.092 48.5954L110.64 50.4817C113.81 51.5596 117.258 49.8505 118.341 46.6638L126.057 23.9703C127.14 20.7835 125.449 17.3273 122.279 16.2493L77.1262 0.897598C73.9558 -0.180318 70.5083 1.52878 69.4248 4.71552L61.7091 27.409C60.6256 30.5958 62.3169 34.052 65.4872 35.13L71.0353 37.0163L67.2431 48.1698L39.1183 38.6074C35.9479 37.5294 32.5004 39.2385 31.4169 42.4253L0.554337 133.198C-0.529146 136.385 1.16215 139.841 4.33252 140.919L94.6387 171.623C97.809 172.701 101.257 170.992 102.34 167.805L133.203 77.0322C134.286 73.8454 132.595 70.3892 129.424 69.3112ZM78.9427 14.388L112.616 25.8367L108.823 36.9913L75.1502 25.5426L78.9427 14.388ZM82.5148 40.9193L93.6121 44.6924L89.82 55.8458L78.7227 52.0728L82.5148 40.9193ZM92.8221 158.133L13.9955 131.332L40.9348 52.0977L119.761 78.8986L92.8221 158.133Z"
+                          fill="black"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    width: 40%;
+                    display: flex;
+                    align-items: end;
+                    justify-content: start;
+                    height: 70%;
+                  "
+                >
+                  <div
+                    style="
+                      width: 251.96px;
+                      height: 249.96px;
+                      background: #87fff9;
+                      border-radius: 23px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <div data-svg-wrapper="">
+                      <svg
+                        width="94"
+                        height="144"
+                        viewBox="0 0 94 144"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M17.9312 0.0448888L76.7632 0.202L76.64 46.3255L68.2354 46.3031L68.2095 56.0336L93.4232 56.1009L93.1901 143.367L0.739868 143.12L0.972912 55.854L26.1866 55.9214L26.2126 46.1909L17.808 46.1684L17.9312 0.0448888ZM34.6172 46.2133L34.5912 55.9438L59.8049 56.0111L59.8309 46.2806L34.6172 46.2133ZM68.2578 37.9171L68.3362 8.5655L26.3134 8.45328L26.235 37.8049L34.6396 37.8274L34.6956 16.8617L59.9093 16.929L59.8533 37.8947L68.2578 37.9171ZM51.4487 37.8723L51.4823 25.2925L43.0777 25.2701L43.0441 37.8498L51.4487 37.8723ZM9.35509 64.2624L9.16683 134.757L84.8079 134.959L84.9962 64.4644L9.35509 64.2624ZM17.7373 72.6708L76.5692 72.8279L76.5042 97.1994C76.4609 113.41 63.2559 126.515 47.0098 126.472C30.7637 126.428 17.6289 113.252 17.6722 97.0423L17.7373 72.6708ZM26.1194 81.0792L26.0767 97.0648C26.0458 108.643 35.4278 118.055 47.0322 118.086C58.6366 118.117 68.0687 108.756 68.0996 97.177L68.1423 81.1914L26.1194 81.0792Z"
+                          fill="black"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          </div>
+        </div>
+        <div style="background-color: #101010;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 50px;
+              padding: 10px;
+              width: 183px;
+              height: 15px;
+              border-radius: 63px;
+              margin: 0 auto;
+              margin-bottom: 53px;
+              margin-top: 20px;
+            "
+          >
+            <p style="font-size: 12px; font-weight: 900">Escolha</p>
+            <img src="./imagens/seta.png" alt="Seta branca" />
+          </div>
+          </div>
+      </div>
+      <div class="tela">
+        <div class="tagQuiz">QUIZ</div>
+        <div style="height: 100%;display: grid;grid-template-rows: auto min-content;">
+          <div id="divGeralClima">
+            <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoGrid" />
+
+
+            <div id="divDual" style="display: flex;align-items: center;justify-content: center;flex-direction: column;height: 100%;">
+                <div id="divAjuste">
+                    <div id="divImgOca" style="display: flex;align-items: center;padding: 20px;">
+                        <img src="./imagens/Logo_digital_perfumes.png" id="imgLogoDesktok" />
+                        <div id="textT" style="background: #a0f0ff;border-radius: 50px;padding: 12px 25px;font-size: 18px;color: #000;display: inline-block;">Descubra</div>
+                    </div>
+
+                    <div class="texto textoDesk" style="margin: 20px">Descubra Seu Perfume Perfeito!</div>
+
+                    <p id="textoPara" style="margin: 30px 0px 15px;">Estamos a um passo de revelar o aroma que combina perfeitamente com você.</p>
+                </div>
+
+                <div id="divForaFim" style="
+                  background-color: #101010;
+                  border-radius: 18px;
+                  padding: 20px;
+                "
+              >
+                <div id="divDadosOcasiao"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    gap: 20px;
+                    width: 100%;
+                  "
+                >
+                  <div>
+                    <strong>Para receber o resultado exclusivo</strong> do seu Perfume Perfeito, insira seu e-mail e número de telefone abaixo:
+                  </div>
+
+                  <div style="display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 20px;">
+                    <div id="labelIdade" style="width: 90px !important;">E-mail</div>
+                    <input type="text" placeholder="Informe aqui" id="inputIdade" />
+                  </div>
+
+                  <div style="display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 20px;">
+                    <div id="labelIdade" style="width: 90px !important;">Whatsapp</div>
+                    <input type="text" placeholder="Informe aqui" id="inputIdade" />
+                  </div>
+                </div>
+              </div>
+          </div>
+          </div>
+          <div style="background-color: #101010;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 50px;
+              padding: 10px;
+              width: 183px;
+              height: 15px;
+              border-radius: 63px;
+              margin: 0 auto;
+              margin-bottom: 53px;
+              margin-top: 20px;
+            "
+          >
+            <p style="font-size: 12px; font-weight: 900">Escolha</p>
+            <img src="./imagens/seta.png" alt="Seta branca" />
+          </div>
+        </div>
+      </div>
+      <div class="tela">
+        <div id="divGeralFinal">
+          <div id="imgResult">
+            <img
+              src="./imagens/Logo_digital_perfumes.png"
+              style="padding: 0px !important; margin: 0px !important"
+            />
+            <div
+              id="resultadoDesktop"
+              style="
+                width: 202.11px;
+                height: 50.06px;
+                background: #a0f0ff;
+                border-radius: 57.28px;
+                justify-content: center;
+                align-items: center;
+                display: inline-flex;
+              "
+            >
+              <div
+                style="
+                  color: black;
+                  font-size: 13.91px;
+                  font-family: Sora;
+                  font-weight: 600;
+                  word-wrap: break-word;
+                "
+              >
+                Resultado
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+              padding-bottom: 53px;
+            "
+          >
+            <div
+              id="resultadoMobile"
+              style="
+                width: 202.11px;
+                height: 50.06px;
+                background: #a0f0ff;
+                border-radius: 57.28px;
+                justify-content: center;
+                align-items: center;
+                display: inline-flex;
+              "
+            >
+              <div
+                style="
+                  color: black;
+                  font-size: 13.91px;
+                  font-family: Sora;
+                  font-weight: 600;
+                  word-wrap: break-word;
+                "
+              >
+                Resultado
+              </div>
+            </div>
+
+            <div class="texto" style="margin: 10px">
+              O seu perfume perfeito é o
+            </div>
+            <div id="fimtexto"
+              style="
+                width: 606px;
+                height: 152.28px;
+                background: #101010;
+                border-radius: 9.37px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+              "
+            >
+              <div data-svg-wrapper="">
+                <svg
+                  width="11"
+                  height="18"
+                  viewBox="0 0 11 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5.78301 9.00578L0.409285 3.58285C0.136241 3.30759 3.05176e-05 2.97093 3.05176e-05 2.57292C3.05176e-05 2.17494 0.13628 1.83844 0.409285 1.56322L1.23845 0.726227C1.51106 0.451086 1.84472 0.313477 2.23899 0.313477C2.63325 0.313477 2.96675 0.451086 3.23979 0.726227L10.4492 7.99026C10.722 8.26552 10.8584 8.60214 10.8584 9.00019C10.8584 9.39825 10.722 9.73459 10.4492 10.01L3.23983 17.274C2.96679 17.5493 2.63333 17.6869 2.23902 17.6869C1.84472 17.6869 1.5111 17.5493 1.23848 17.274L0.409324 16.4372C0.13628 16.1621 6.77109e-05 15.8273 6.77109e-05 15.4329C6.77109e-05 15.0387 0.136319 14.7002 0.409324 14.4176L5.78301 9.00578Z"
+                    fill="#A0F0FF"
+                  ></path>
+                </svg>
+              </div>
+              <div id="textDivFim"
+                style="
+                  width: 367.04px;
+                  height: 51.73px;
+                  text-align: center;
+                  color: white;
+                  font-size: 52.77px;
+                  font-family: Labil Grotesk;
+                  font-weight: 600;
+                  line-height: 52.77px;
+                  word-wrap: break-word;
+                "
+              >
+                Assad Lataffa
+              </div>
+              <div data-svg-wrapper="">
+                <svg
+                  width="11"
+                  height="18"
+                  viewBox="0 0 11 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5.07539 9.00578L10.4491 3.58285C10.7222 3.30759 10.8584 2.97093 10.8584 2.57292C10.8584 2.17494 10.7221 1.83844 10.4491 1.56322L9.61995 0.726227C9.34734 0.451086 9.01368 0.313477 8.61941 0.313477C8.22515 0.313477 7.89165 0.451086 7.6186 0.726227L0.409216 7.99026C0.136406 8.26552 0 8.60214 0 9.00019C0 9.39825 0.136367 9.73459 0.409216 10.01L7.61857 17.274C7.89161 17.5493 8.22507 17.6869 8.61937 17.6869C9.01368 17.6869 9.3473 17.5493 9.61991 17.274L10.4491 16.4372C10.7221 16.1621 10.8583 15.8273 10.8583 15.4329C10.8583 15.0387 10.7221 14.7002 10.4491 14.4176L5.07539 9.00578Z"
+                    fill="#A0F0FF"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="buttonWhatsapp" onclick="openWhatsApp()" style="margin-bottom: 53px;">
+            <div
+              style="
+                color: white;
+                font-size: 19.91px;
+                font-family: Sora;
+                font-weight: 600;
+                word-wrap: break-word;
+              "
+            >
+              Nos chame no Whatsapp
+            </div>
+            <div data-svg-wrapper="">
+              <svg
+                width="34"
+                height="33"
+                viewBox="0 0 34 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17.2696 0.0395508H17.2614C8.18529 0.0395508 0.804688 7.42221 0.804688 16.5003C0.804688 20.1011 1.96517 23.4386 3.93841 26.1484L1.88698 32.2636L8.2141 30.241C10.817 31.9652 13.9219 32.9611 17.2696 32.9611C26.3457 32.9611 33.7263 25.5764 33.7263 16.5003C33.7263 7.42427 26.3457 0.0395508 17.2696 0.0395508ZM26.8477 23.2842C26.4506 24.4056 24.8745 25.3357 23.6173 25.6073C22.7572 25.7904 21.6338 25.9365 17.8519 24.3686C13.0145 22.3645 9.89927 17.4489 9.65648 17.13C9.42397 16.811 7.70176 14.5271 7.70176 12.165C7.70176 9.80285 8.90134 8.65266 9.38487 8.15883C9.78199 7.75349 10.4384 7.5683 11.068 7.5683C11.2717 7.5683 11.4548 7.57859 11.6194 7.58682C12.103 7.6074 12.3458 7.6362 12.6647 8.39957C13.0618 9.35636 14.0289 11.7185 14.1441 11.9613C14.2614 12.2041 14.3787 12.5333 14.2141 12.8522C14.0597 13.1814 13.9239 13.3275 13.6811 13.6074C13.4383 13.8872 13.2079 14.1012 12.9651 14.4016C12.7429 14.6629 12.4918 14.9427 12.7717 15.4263C13.0515 15.8995 14.0186 17.4777 15.4424 18.7452C17.2799 20.381 18.7696 20.9036 19.3025 21.1258C19.6996 21.2904 20.1729 21.2513 20.463 20.9427C20.8313 20.5456 21.286 19.8871 21.749 19.239C22.0782 18.774 22.4938 18.7164 22.93 18.881C23.3745 19.0353 25.7263 20.1978 26.2099 20.4386C26.6934 20.6814 27.0123 20.7966 27.1296 21.0003C27.2448 21.204 27.2448 22.1608 26.8477 23.2842Z"
+                  fill="#A0F0FF"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="./index.js"></script>
-</body>
-
+  </body>
 </html>

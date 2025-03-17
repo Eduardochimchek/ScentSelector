@@ -1,369 +1,755 @@
-/* Configuração geral do corpo */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: black;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: background 0.5s ease-in-out;
-    /* Suaviza a troca de fundo */
-    overflow: hidden;
+  height: 100vh;
+
+  font-family: Arial, sans-serif;
+  text-align: center;
+
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: black;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition: background 0.5s ease-in-out;
 }
 
-/* Container principal */
 #container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
 }
 
-/* Configuração das telas */
 .tela {
-    display: none;
-    width: 100%;
-    text-align: center;
-    font-size: 24px;
-    color: white;
-    height: 100%;
-    position: relative;
+  width: 100%;
+  height: 100%;
+
+  text-align: center;
+  font-size: 24px;
+  color: white;
+
+  display: none;
+
+  position: relative;
 }
 
-/* Tela ativa */
 .ativo {
-    display: block;
+  display: block;
 }
 
-/* Ajuste para imagens responsivas */
-img {
+/* img{
     max-width: 100%;
     height: auto;
-}
+} */
 
-/* Texto responsivo */
 .texto {
-    font-size: 5vw;
-    font-weight: bold;
-    color: white;
-    text-align: center;
+  font-size: 5vw;
+  font-weight: bold;
+  color: white;
+  text-align: center;
 }
 
-/* Contêiner dos botões */
 .botao-container {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 15px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 15px;
 }
 
-/* Botões */
 button {
-    padding: 12px 25px;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    border-radius: 25px;
-    background: #A0F0FF;
-    color: black;
-    font-weight: bold;
-    transition: background 0.3s ease-in-out, transform 0.2s;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 25px;
+
+  cursor: pointer;
+
+  background: #a0f0ff;
+
+  padding: 12px 25px;
+
+  transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
-/* Efeito hover nos botões */
 button:hover {
-    background: #89d8e7;
-    transform: scale(1.05);
+  background: #89d8e7;
+
+  transform: scale(1.05);
 }
 
-/* Efeito ao clicar */
 button:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .slider-container {
-    position: relative;
-    width: 100%;
-    height: 12px;
-    background: white;
-    border-radius: 6px;
-    margin: 30px auto;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+  width: 100%;
+  height: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  position: relative;
+
+  background: white;
+
+  border-radius: 6px;
+
+  margin: 30px auto;
 }
 
 .slider-line {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 12px;
-    background: white;
-    border-radius: 6px;
+  width: 100%;
+  height: 12px;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  background: white;
+
+  border-radius: 6px;
 }
 
 .slider-thumb {
-    position: absolute;
-    top: 50%;
-    left: 0%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    background: #A0F0FF;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
-    cursor: grab;
-    box-shadow: 0px 0px 10px rgb(255 255 255);
-    transition: box-shadow 0.3s ease-in-out;
-    user-select: none;
+  width: 50px;
+  height: 50px;
+
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+
+  position: absolute;
+  top: 50%;
+  left: 0%;
+
+  transform: translate(-50%, -50%);
+
+  background: #a0f0ff;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: grab;
+
+  box-shadow: 0px 0px 10px rgb(255 255 255);
+
+  transition: box-shadow 0.3s ease-in-out;
+
+  user-select: none;
 }
 
 .slider-numbers {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 10px;
 }
 
 .slider-numbers span {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .opcOCUSO {
-    width: 50px;
-    height: 0px;
-    padding-left: 37px;
-    padding-right: 37px;
-    padding-top: 19px;
-    padding-bottom: 19px;
-    border-radius: 68.66px;
-    border: 0.79px white solid;
-    justify-content: center;
-    align-items: center;
-    gap: 13.80px;
-    display: inline-flex;
-    cursor: pointer;
+  color: #fff;
+  font-size: 12px;
+
+  height: 0px;
+
+  padding: 19px 37px;
+
+  border-radius: 68.66px;
+  border: 1px #fff solid;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13.8px;
+
+  cursor: pointer;
 }
 
 .opcOCUSO:hover {
-    background: linear-gradient(0deg, #AFF3FF 0%, #AFF3FF 100%), linear-gradient(0deg, #A0F0FF 0%, #A0F0FF 100%);
-    border-radius: 68.66px;
-}
+  background: linear-gradient(0deg, #aff3ff 0%, #aff3ff 100%),
+    linear-gradient(0deg, #a0f0ff 0%, #a0f0ff 100%);
 
-.opcOCUSOtext {
-    color: white;
-    font-size: 10px;
-    font-family: Labil Grotesk;
-    font-weight: 400;
-    word-wrap: break-word
-}
+  border-radius: 68.66px;
 
-.opcOCUSO:hover .opcOCUSOtext {
-    color: black;
+  color: black;
 }
 
 .opcMOMENTO {
-    width: 76px;
-    height: 69px;
-    background: #EBFCFF;
-    border-radius: 24.05px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  width: 110px;
+  height: 100px;
+
+  background: #ebfcff;
+
+  border-radius: 24.05px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
 }
 
 .opcMOMENTO:hover {
-    background: #AFF3FF;
+  background: #aff3ff;
 }
 
 .opcCLIMA {
-    width: 100px;
-    height: 100px;
-    border-radius: 28.73px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  width: 220px;
+  height: 210px;
+
+  border-radius: 28.73px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
 }
 
 .opcCLIMA:hover {
-    border: 5px solid #0000006b;
+  border: 5px solid #0000006b;
 }
 
 .opcSEXO {
-    width: 100px;
-    height: 100px;
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  width: 100px;
+  height: 100px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .opcSEXO:hover {
-    border: 5px solid #0000006b;
+  border: 5px solid #0000006b;
 }
 
 .input_Sentimento {
-    display: flex;
-    align-items: center;
-    /* width: 500px; */
-    background: #333;
-    border-radius: 20px;
-    height: 40px;
-    border: 1px solid white;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  align-items: center;
+  /* width: 500px; */
+  background: #333;
+  border-radius: 20px;
+  height: 40px;
+  border: 1px solid white;
+  justify-content: center;
+  text-align: center;
 }
 
 .label_Sentimento {
-    background: #a8ecff;
-    padding: 10px;
-    border-radius: 20px 0 0 20px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    color: black;
-    height: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: #a8ecff;
+  padding: 10px;
+  border-radius: 20px 0 0 20px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .input-field_Sentimento {
-    flex: 1;
-    border: none;
-    background: transparent;
-    color: white;
-    padding: 10px;
-    font-size: 14px;
-    outline: none;
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  outline: none;
 }
 
 .input-field_Sentimento::placeholder {
-    color: #aaa;
+  color: #aaa;
 }
 
 .opcSENTIMENTO {
-    width: 50px;
-    height: 0px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 20.84px;
-    padding-bottom: 20.84px;
-    border-radius: 74.06px;
-    border: 0.85px white solid;
-    justify-content: center;
-    align-items: center;
-    gap: 14.89px;
-    display: inline-flex;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
+  width: 50px;
+  height: 0px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20.84px;
+  padding-bottom: 20.84px;
+  border-radius: 74.06px;
+  border: 0.85px white solid;
+  justify-content: center;
+  align-items: center;
+  gap: 14.89px;
+  display: inline-flex;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .opcSENTIMENTO:hover,
 .opcSENTIMENTO.selected {
-    background: #A0F0FF;
+  background: #a0f0ff;
 }
 
 .opcSENTIMENTOtext {
-    color: white;
-    font-size: 10px;
-    font-family: Sora;
-    font-weight: 300;
-    word-wrap: break-word;
+  color: white;
+  font-size: 10px;
+  font-family: Sora;
+  font-weight: 300;
+  word-wrap: break-word;
 }
 
 .opcSENTIMENTO:hover .opcSENTIMENTOtext,
 .opcSENTIMENTO.selected .opcSENTIMENTOtext {
-    color: black;
+  color: black;
 }
 
 .buttonWhatsapp {
-    width: 300px;
-    height: 29px;
-    padding-top: 20.04px;
-    padding-bottom: 20.04px;
-    padding-left: 34.35px;
-    padding-right: 32.86px;
-    background: #101010;
-    border-radius: 83.33px;
-    justify-content: center;
-    align-items: center;
-    gap: 27.04px;
-    display: inline-flex;
-    cursor: pointer;
+  width: 300px;
+  height: 29px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 27.04px;
+
+  padding: 20px 34px;
+  margin: 0 auto;
+
+  background: #101010;
+
+  border-radius: 84px;
+
+  cursor: pointer;
 }
 
 .buttonWhatsapp:hover {
-    background: #494949;
+  background: #494949;
 }
 
 .tagQuiz {
-    right: 10px;
-    bottom: 10px;
-    position: absolute;
-    text-align: center;
-    color: #A0F0FF;
-    font-size: 468.72px;
-    font-family: Labil Grotesk;
-    font-weight: 600;
-    line-height: 468.72px;
-    word-wrap: break-word;
+  color: #a0f0ff;
+  font-size: 335px;
+  font-weight: 600;
+  font-family: Labil Grotesk;
+  word-wrap: break-word;
+
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: -999;
+
+  display: flex;
+  align-items: end;
+  justify-content: end;
 }
 
-/* Dispositivos muito pequenos (até 320px - celulares antigos e compactos) */
+#divGeralPrincipal {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#imgLogo {
+  max-width: 100%;
+  height: 70px;
+
+  padding-top: 53px;
+  margin: 0 auto;
+}
+
+#divGeralIdade {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#divIdade {
+  display: none;
+}
+
+#divQualPerfume{
+    display: none;
+}
+
+#labelIdade {
+  font-size: 14px;
+  color: #000;
+
+  width: 86px;
+  height: 35px;
+
+  background-color: #a0f0ff;
+
+  border: 1px solid grey;
+  border-right: none;
+  border-radius: 20px 0px 0px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5px;
+}
+
+#inputIdade {
+  font-size: 16px;
+  color: #fff;
+
+  max-width: 180px;
+  height: 35px;
+
+  border: 1px solid grey;
+  border-left: none;
+  border-radius: 0px 20px 20px 0px;
+
+  background-color: transparent;
+
+  padding: 5px;
+
+  outline: none;
+}
+
+#divGeralOcasiao {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#divOcasiao {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+}
+
+#divGeralFinal {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#imgResult {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  padding-top: 53px;
+}
+
+#resultadoMobile {
+  display: none !important;
+}
+
+#divAjuste{
+    width: 43%;
+}
+
+#divImgOca{
+    gap: 20px;
+}
+
+#divFora{
+    width: 50%;
+    height: 45%;
+}
+
+#divDadosOcasiao{
+    height: 100%;
+}
+
+#divOcasiao{
+    width: 100%;
+}
+
+.ocasiaoSolo{
+    grid-template-columns: 50%;
+
+    justify-content: center;
+}
+
+.textoDesk{
+    text-align: start;
+}
+
+.divForaTempo{
+    width: 50%;
+    height: 35%;
+}
+
+.divForaSexo{
+    width: 50%;
+    height: 35%;
+}
+
+#divForaFim{
+    width: 35%;
+    height: 35%;
+}
+
+#divDua{
+    flex-direction: column !important;
+  }
+
+
+  #fimtexto{
+    width: 606px !important;
+  }
+
+  #textDivFim{
+    font-size: 51.73px !important;
+    width: 367.04px !important;
+  }
+
 @media screen and (max-width: 320px) {
-    
 }
 
-/* Smartphones pequenos e médios (321px a 480px) */
 @media screen and (max-width: 480px) {
+  .slider-container {
+    width: 90%;
+  }
 
-    /* Ajustes para celulares padrão */
-    .slider-container {
-        width: 90%;
-    }
+  .slider-thumb {
+    width: 45px;
+    height: 45px;
+    font-size: 14px;
+  }
 
-    .slider-thumb {
-        width: 45px;
-        height: 45px;
-        font-size: 14px;
-    }
-
-    .texto {
-        font-size: 2em;
-    }
-
-    .slider-numbers span {
-        font-size: 12px;
-    }
+  .texto {
+    font-size: 2em;
+  }
 }
 
-/* Smartphones grandes e pequenos tablets (481px a 768px) */
+
 @media screen and (max-width: 768px) {
-    /* Ajustes para celulares maiores e tablets pequenos */
+  #divGeralPrincipal {
+    display: grid;
+    align-items: center;
+    grid-template-rows: min-content auto;
+  }
+
+
+
+  #divGeralClima{
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+  }
+
+  #divGeralClimaAt{
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+  }
+
+  #fimtexto{
+    width: 320px !important;
+  }
+
+  #textDivFim{
+    font-size: 24px !important;
+    width: 253px !important;
+  }
+
+  .opcCLIMA{
+    width: 100px;
+    height: 100px;
+  }
+
+  .textoDesk{
+    text-align: center;
+  }
+
+  .opcMOMENTO{
+    width: 76px;
+    height: 69px;
+  }
+
+  .textTclima{
+    height: 20px;
+  }
+
+  .divForaTempo{
+    background-color: transparent !important;
+  }
+
+  #divForaFim{
+    background-color: transparent !important;
+    width: 60% !important;
+  }
+
+  #divDual{
+    flex-direction: column !important;
+  }
+
+  #divFora{
+    width: auto;
+    height: 45%;
 }
 
-/* Tablets e telas médias (769px a 1024px) */
-@media screen and (max-width: 1023px) {
-    .tagQuiz{
-        display: none;
-    }
-    /* Ajustes para tablets e alguns notebooks pequenos */
+  #imgLogo {
+    height: 45px;
+  }
+
+  #divAjuste{
+    width: 100%;
 }
+
+  #imgLogoGrid{
+    height: 45px;
+
+    margin: 0 auto;
+
+    padding-top: 53px;
+  }
+
+  #divImgOca{
+    justify-content: center;
+  }
+
+  #divIdade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+  }
+
+  #labelIdade {
+    width: 40px;
+  }
+
+  #inputIdade {
+    width: 130px;
+  }
+
+  #SlideDiv {
+    display: none;
+  }
+
+  #divGeralIdade {
+    display: grid;
+    align-items: center;
+    grid-template-rows: min-content auto min-content;
+  }
+
+  #divGeralOcasiao {
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+  }
+
+  #divGeralFinal {
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+  }
+
+  #imgResult {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  #resultadoMobile {
+    display: inline-flex !important;
+  }
+
+  #resultadoDesktop {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 1328px) {
+  .tagQuiz {
+    display: none;
+  }
+
+  #divForaFim{
+    background-color: transparent !important;
+    width: 60% !important;
+  }
+
+  .divForaSexo{
+    background-color: transparent !important;
+    width: 115px;
+    height: 115px;
+  }
+
+  .opcCLIMA{
+    width: 100px;
+    height: 100px;
+  }
+
+  #imgLogoDesktok{
+    display: none;
+    }
+
+    #hideQual{
+        display: none !important;
+    }
+
+    #divQualPer{
+        background-color: transparent !important;
+        width: 0px !important;
+        height: 0px !important;
+    }
+
+    #divQualPerfume{
+        display: flex;
+    }
+
+    .divForaTempo{
+        background-color: transparent !important;
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    #textT{
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1328px) {
+    #imgLogoGrid{
+      display: none;
+    }
+
+    #divDua{
+        flex-direction: row !important;
+    }
+
+    #divDual{
+        flex-direction: row !important;
+    }
+
+    #textoPara{
+        width: 300px;
+    }
+  }
