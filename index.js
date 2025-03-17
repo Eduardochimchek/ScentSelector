@@ -20,6 +20,12 @@ const fundos = [
     './imagens/fundo_pg_resultado.png'   // Tela 10
 ];
 
+document.querySelectorAll(".opcOCUSO").forEach((element) => {
+    element.addEventListener("click", function (){
+        this.classList.toggle("selected");
+    });
+});
+
 function atualizarTela (){
     // Remove a classe 'ativo' de todas as telas
     telas.forEach(tela => tela.classList.remove('ativo'));

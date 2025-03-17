@@ -68,12 +68,12 @@
                   margin: 0 auto;
                 "
               >
-                <div class="slider-container" id="slider">
+                <div class="slider-container" id="slider" style="user-select: none;">
                   <div class="slider-line"></div>
                   <div class="slider-thumb" id="thumb">0</div>
                 </div>
 
-                <div class="slider-numbers">
+                <div class="slider-numbers" style="user-select: none;">
                   <span>0</span>
                   <span>20</span>
                   <span>40</span>
@@ -619,21 +619,26 @@
                   "
                 >
                   <div id="divOcasiao">
-                    <div onclick="avancar()" class="opcOCUSO">CONFIANÇA</div>
-                    <div onclick="avancar()" class="opcOCUSO">PODER</div>
+                    <div class="opcOCUSO">CONFIANÇA</div>
+                    <div class="opcOCUSO">PODER</div>
                   </div>
 
                   <div id="divOcasiao">
-                    <div onclick="avancar()" class="opcOCUSO">RESPEITO</div>
-                    <div onclick="avancar()" class="opcOCUSO">CONHECIMENTO</div>
+                    <div class="opcOCUSO">RESPEITO</div>
+                    <div class="opcOCUSO">CONHECIMENTO</div>
                   </div>
 
                   <div style="display: flex;
                   align-items: center;
                   justify-content: center;
+                  flex-direction: column;
+                  gap: 20px;
                   border-radius: 20px;">
-                    <div id="labelIdade" style="width: 90px !important;">OUTROS</div>
-                    <input type="text" placeholder="Informe aqui" id="inputIdade" />
+                    <div style="display: flex;">
+                        <div id="labelIdade" style="width: 90px !important;">OUTROS</div>
+                        <input type="text" placeholder="Informe aqui" id="inputIdade" />
+                    </div>
+                    <button onclick="avancar()">Avançar</button>
                   </div>
                 </div>
               </div>
@@ -677,7 +682,7 @@
                 <div id="divQualPer"
               style="
                 width: 710px;
-                height: 620px;
+                height: 420px;
                 padding: 40px 0px;
                 background: #101010;
                 border-radius: 31.52px;
@@ -689,10 +694,6 @@
                 flex-direction: column;
               "
             >
-            <div id="divQualPerfume">
-                <div id="labelIdade" style="width: 55px !important;">Perfume</div>
-                <input type="text" placeholder="Informe aqui" id="inputIdade" />
-              </div>
               <div id="hideQual"
                 style="
                   height: 80%;
@@ -750,7 +751,7 @@
                   <div
                     style="
                       width: 300px;
-                      height: 292px;
+                      height: 235px;
                       transform: rotate(17deg);
                       transform-origin: top left;
                       background: #3ee0ff;
@@ -815,6 +816,13 @@
                   </div>
                 </div>
               </div>
+              <div id="divQualPerfume">
+                <div style="display: flex;">
+                  <div id="labelIdade" style="width: 55px !important;">Perfume</div>
+                  <input type="text" placeholder="Informe aqui" id="inputIdade" />
+                </div>
+              </div>
+              <button onclick="avancar()">Avançar</button>
           </div>
           </div>
         </div>
@@ -891,6 +899,8 @@
                     <div id="labelIdade" style="width: 90px !important;">Whatsapp</div>
                     <input type="text" placeholder="Informe aqui" id="inputIdade" />
                   </div>
+
+                  <button onclick="avancar()">Finalizar</button>
                 </div>
               </div>
           </div>

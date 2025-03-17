@@ -196,6 +196,12 @@ button:active {
   color: black;
 }
 
+.opcOCUSO.selected{
+    background: #aff3ff;
+    color: black;
+    border-color: black;
+}
+
 .opcMOMENTO {
   width: 110px;
   height: 100px;
@@ -346,7 +352,7 @@ button:active {
 
 .tagQuiz {
   color: #a0f0ff;
-  font-size: 335px;
+  font-size: 285px;
   font-weight: 600;
   font-family: Labil Grotesk;
   word-wrap: break-word;
@@ -355,10 +361,6 @@ button:active {
   right: 10px;
   bottom: 10px;
   z-index: -999;
-
-  display: flex;
-  align-items: end;
-  justify-content: end;
 }
 
 #divGeralPrincipal {
@@ -390,10 +392,6 @@ button:active {
 
 #divIdade {
   display: none;
-}
-
-#divQualPerfume{
-    display: none;
 }
 
 #labelIdade {
@@ -516,7 +514,7 @@ button:active {
 
 #divForaFim{
     width: 35%;
-    height: 35%;
+    height: 55%;
 }
 
 #divDua{
@@ -723,6 +721,8 @@ button:active {
 
     #divQualPerfume{
         display: flex;
+        flex-direction: column;
+        gap: 10px;
     }
 
     .divForaTempo{
@@ -733,6 +733,10 @@ button:active {
 
     #textT{
         margin: 0 auto;
+    }
+
+    .textoDesk{
+    text-align: center;
     }
 }
 
