@@ -1,7 +1,7 @@
-const telas     = document.querySelectorAll('.tela');
+const telas = document.querySelectorAll('.tela');
 let indiceAtual = 0;
 
-const thumb  = document.getElementById("thumb");
+const thumb = document.getElementById("thumb");
 const slider = document.getElementById("slider");
 
 let dragging = false;
@@ -21,12 +21,25 @@ const fundos = [
 ];
 
 document.querySelectorAll(".opcOCUSO").forEach((element) => {
-    element.addEventListener("click", function (){
-        this.classList.toggle("selected");
+    element.addEventListener("click", function () {
+        document.querySelectorAll(".opcOCUSO").forEach((item) => {
+            item.classList.remove("selected");
+        });
+
+        this.classList.add("selected");
     });
 });
 
-function atualizarTela (){
+document.querySelector('.buttonWhatsapp').addEventListener('click',
+    function () {
+        document.querySelectorAll('.tela').forEach((tela) => {
+            tela.classList.remove('ativo');
+        });
+
+        document.querySelector('.pg_principal').classList.add('ativo');
+    });
+
+function atualizarTela() {
     // Remove a classe 'ativo' de todas as telas
     telas.forEach(tela => tela.classList.remove('ativo'));
 
@@ -37,21 +50,21 @@ function atualizarTela (){
     document.body.style.backgroundImage = `url('${fundos[indiceAtual]}')`;
 }
 
-function avancar (){
-    if(indiceAtual < telas.length - 1){
+function avancar() {
+    if (indiceAtual < telas.length - 1) {
         indiceAtual++;
         atualizarTela();
     }
 }
 
-function voltar (){
-    if(indiceAtual > 0){
+function voltar() {
+    if (indiceAtual > 0) {
         indiceAtual--;
         atualizarTela();
     }
 }
 
-function selSentimeto (element){
+function selSentimeto(element) {
     // Remove a classe 'selected' de todos os elementos
     document.querySelectorAll('.opcSENTIMENTO').forEach(el => el.classList.remove('selected'));
 
@@ -59,26 +72,26 @@ function selSentimeto (element){
     element.classList.add('selected');
 }
 
-function openWhatsApp (){
+function openWhatsApp() {
     var phoneNumber = "556692479111"; // Coloque o número com código do país e sem espaços ou traços
-    var message     = "Olá, gostaria de mais informações, fiz o quizz e meu resultado foi o Assad Lataffa!"; // Mensagem personalizada
-    var url         = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+    var message = "Olá, gostaria de mais informações, fiz o quizz e meu resultado foi o Assad Lataffa!"; // Mensagem personalizada
+    var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
     window.open(url, "_blank");
 }
 
 document.body.style.backgroundImage = `url('${fundos[indiceAtual]}')`;
 
 // Função para manipular o movimento do mouse ou toque
-function onMove (e){
-    if(!dragging)
+function onMove(e) {
+    if (!dragging)
         return;
 
     const sliderRect = slider.getBoundingClientRect();
     let newLeft;
 
-    if(e.type === "mousemove"){
+    if (e.type === "mousemove") {
         newLeft = e.clientX - sliderRect.left;
-    }else if(e.type === "touchmove"){
+    } else if (e.type === "touchmove") {
         newLeft = e.touches[0].clientX - sliderRect.left;
     }
 
@@ -89,7 +102,7 @@ function onMove (e){
     const age = Math.round((newLeft / sliderRect.width) * 100);
 
     // Aplicar posição e atualizar valor
-    thumb.style.left  = `${(age / 100) * 100}%`;
+    thumb.style.left = `${(age / 100) * 100}%`;
     thumb.textContent = age;
 }
 
