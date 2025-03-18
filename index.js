@@ -43,6 +43,8 @@ document.querySelector('#buttonNovamente').addEventListener('click', function ()
     document.getElementById("inputClima").value = "";
     document.getElementById("inputSexo").value = "";
     document.getElementById("inputSentimento").value = "";
+    document.getElementById("inputIdade").value = "";
+    vage = 999;
 
     vage = 0;
     thumb.style.left = '0%';
@@ -307,7 +309,6 @@ async function recomendar() {
         document.getElementById('textDivFim').innerHTML = "Nenhum perfume encontrado com essas características.";
     }
 }
-
 
 function onMove(e) {
     if (!dragging)
