@@ -747,6 +747,10 @@ button:active {
     .textoDesk {
         text-align: center;
     }
+
+    #divEscolha{
+        display: none !important;
+    }
 }
 
 @media screen and (min-width: 1328px) {
