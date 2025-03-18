@@ -1,52 +1,51 @@
 const telas = document.querySelectorAll('.tela');
-let indiceAtual = 0;
-
 const thumb = document.getElementById("thumb");
 const slider = document.getElementById("slider");
 
 let dragging = false;
-
+let indiceAtual = 0;
 
 const fundos = [
-    './imagens/fundo_pg_principal.png',  // Tela 1
-    './imagens/fundo_pg_idade.png',      // Tela 2
-    './imagens/fundo_pg_oca_uso.png',    // Tela 3
-    './imagens/fundo_pg_momento.png',    // Tela 4
-    './imagens/fundo_pg_clima.png',      // Tela 5
-    './imagens/fundo_pg_sexo.png',       // Tela 6
-    './imagens/fundo_pg_sentimento.png', // Tela 7
-    './imagens/fundo_pg_perfume.png',    // Tela 8
-    './imagens/fundo_pg_descubra.png',   // Tela 9
-    './imagens/fundo_pg_resultado.png'   // Tela 10
+    './imagens/fundo_pg_principal.png',
+    './imagens/fundo_pg_idade.png',
+    './imagens/fundo_pg_oca_uso.png',
+    './imagens/fundo_pg_momento.png',
+    './imagens/fundo_pg_clima.png',
+    './imagens/fundo_pg_sexo.png',
+    './imagens/fundo_pg_sentimento.png',
+    './imagens/fundo_pg_perfume.png',
+    './imagens/fundo_pg_descubra.png',
+    './imagens/fundo_pg_resultado.png'
 ];
 
-document.querySelectorAll(".opcOCUSO").forEach((element) => {
-    element.addEventListener("click", function () {
-        document.querySelectorAll(".opcOCUSO").forEach((item) => {
-            item.classList.remove("selected");
-        });
+document.body.style.backgroundImage = `url('${fundos[indiceAtual]}')`;
 
-        this.classList.add("selected");
+document.querySelectorAll(".opcSENT").forEach(element => {
+    element.addEventListener("click", function () {
+        document.querySelectorAll(".opcSENT").forEach(item => item.classList.remove("selected"));
+        document.getElementById("inputSentimentoSel").value = ""; // Limpa input
+        this.classList.add("selected"); // Adiciona classe 'selected'
     });
 });
 
-document.querySelector('.buttonWhatsapp').addEventListener('click',
-    function () {
-        document.querySelectorAll('.tela').forEach((tela) => {
-            tela.classList.remove('ativo');
-        });
+document.querySelector('.buttonWhatsapp').addEventListener('click', () => {
+    telas.forEach(tela => tela.classList.remove('ativo'));
+    document.querySelector('.pg_principal').classList.add('ativo');
+});
 
-        document.querySelector('.pg_principal').classList.add('ativo');
-    });
+document.querySelector('#buttonNovamente').addEventListener('click', function (){
+    indiceAtual = 0; // Reinicia o índice para a primeira tela
+    atualizarTela(); // Atualiza a interface para exibir a primeira tela
+});
+
+function removerSelecao() {
+    // Remove a seleção dos botões ao digitar no input
+    document.querySelectorAll(".opcSENT").forEach(item => item.classList.remove("selected"));
+}
 
 function atualizarTela() {
-    // Remove a classe 'ativo' de todas as telas
     telas.forEach(tela => tela.classList.remove('ativo'));
-
-    // Adiciona a classe 'ativo' na tela atual
     telas[indiceAtual].classList.add('ativo');
-
-    // Altera o fundo conforme a tela atual
     document.body.style.backgroundImage = `url('${fundos[indiceAtual]}')`;
 }
 
@@ -65,23 +64,152 @@ function voltar() {
 }
 
 function selSentimeto(element) {
-    // Remove a classe 'selected' de todos os elementos
     document.querySelectorAll('.opcSENTIMENTO').forEach(el => el.classList.remove('selected'));
-
-    // Adiciona a classe 'selected' apenas ao elemento clicado
     element.classList.add('selected');
 }
 
-function openWhatsApp() {
-    var phoneNumber = "556692479111"; // Coloque o número com código do país e sem espaços ou traços
-    var message = "Olá, gostaria de mais informações, fiz o quizz e meu resultado foi o Assad Lataffa!"; // Mensagem personalizada
-    var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
-    window.open(url, "_blank");
+function selecionarSentimento() {
+    let sentimentoSelecionado = document.querySelector(".opcSENT.selected");
+    let sentimentoDigitado = document.getElementById("inputSentimentoSel").value.trim();
+
+    if (!sentimentoSelecionado && !sentimentoDigitado) {
+        msg("E", "Erro!", "Por favor, selecione ou informe um sentimento.");
+        return;
+    }
+
+    document.getElementById("inputSentimento").value = sentimentoSelecionado ? sentimentoSelecionado.innerText : sentimentoDigitado;
+    avancar();
 }
 
-document.body.style.backgroundImage = `url('${fundos[indiceAtual]}')`;
+function selecionarSexo(valor) {
+    if (!valor) {
+        msg("E", "Erro!", "Por favor, selecione uma opção de sexo.");
+        return;
+    }
 
-// Função para manipular o movimento do mouse ou toque
+    document.getElementById("inputSexo").value = valor;
+    avancar();
+}
+
+function selecionarClima(valor) {
+    if (!valor) {
+        msg("E", "Erro!", "Por favor, selecione um clima.");
+        return;
+    }
+
+    document.getElementById("inputClima").value = valor;
+    avancar();
+}
+
+function selecionarMomento(valor) {
+    if (!valor) {
+        msg("E", "Erro!", "Por favor, selecione um momento do dia.");
+        return;
+    }
+
+    document.getElementById("inputPeriodo").value = valor;
+    avancar();
+}
+
+function selecionarOcasiao(valor) {
+    if (!valor) {
+        msg("E", "Erro!", "Por favor, selecione uma ocasião.");
+        return;
+    }
+
+    document.getElementById("inputOcasião").value = valor;
+    avancar();
+}
+
+function selecionarIdade() {
+    let faixaEtaria = parseInt(document.getElementById("inputFaixaEtaria").value) || 0;  
+
+    if (faixaEtaria < 5) {
+        msg("E", "Erro!", "Por favor, selecione uma faixa etária válida.");
+        return;
+    }
+
+    avancar();
+}
+
+function openWhatsApp() {
+    var phoneNumber = "556692479111";
+    var resultado = document.getElementById('textDivFim').innerHTML;
+    var message = `Olá, fiz o quiz e meu resultado foi:  ${resultado}`;
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
+}
+
+async function loadCSV() {
+    const response = await fetch('./model/perfumesAll.csv');
+    const csvText = await response.text();
+    return new Promise(resolve => {
+        Papa.parse(csvText, {
+            header: true,
+            skipEmptyLines: true,
+            complete: results => {
+                const perfumes = results.data.map(perfume => {
+                    let novoObjeto = {};
+                    Object.keys(perfume).forEach(chave => {
+                        let chaveLimpa = chave.trim();
+                        novoObjeto[chaveLimpa] = perfume[chave].trim();
+                    });
+                    return novoObjeto;
+                });
+                resolve(perfumes);
+            }
+        });
+    });
+}
+
+function calcularSimilaridade(perfumes, respostas) {
+    let melhorPerfume = null;
+    let maiorPontuacao = -1;
+    perfumes.forEach(perfume => {
+        let pontuacao = 0;
+        const normalizarTexto = texto => texto ? texto.trim().toLowerCase() : "";
+        
+        ["Ocasião de Uso", "Período de Uso", "Clima", "Sexo", "Sentimento", "Estilo", "Intensidade"].forEach(campo => {
+            if (normalizarTexto(perfume[campo]) === normalizarTexto(respostas[campo.toLowerCase()])) pontuacao++;
+        });
+        
+        let faixaEtariaCSV = normalizarTexto(perfume['Faixa Etária']);
+        let idadeUsuario = parseInt(respostas.faixaEtaria);
+        if (faixaEtariaCSV.includes("-")) {
+            let [min, max] = faixaEtariaCSV.split('-').map(num => parseInt(num.trim()));
+            if (idadeUsuario >= min && idadeUsuario <= max) pontuacao++;
+        } else if (faixaEtariaCSV === respostas.faixaEtaria) pontuacao++;
+        
+        if (pontuacao > maiorPontuacao) {
+            maiorPontuacao = pontuacao;
+            melhorPerfume = perfume;
+        }
+    });
+    return melhorPerfume;
+}
+
+async function recomendar() {
+    const respostas = {
+        ocasião: document.getElementById("inputOcasião") ? document.getElementById("inputOcasião").value : "",
+        periodo: document.getElementById("inputPeriodo") ? document.getElementById("inputPeriodo").value : "",
+        clima: document.getElementById("inputClima") ? document.getElementById("inputClima").value : "",
+        sexo: document.getElementById("inputSexo") ? document.getElementById("inputSexo").value : "",
+        sentimento: document.getElementById("inputSentimento") ? document.getElementById("inputSentimento").value : "",
+        estilo: document.getElementById("inputEstilo") ? document.getElementById("inputEstilo").value : "",
+        faixaEtaria: document.getElementById("inputFaixaEtaria") ? document.getElementById("inputFaixaEtaria").value : "",
+        intensidade: document.getElementById("inputIntensidade") ? document.getElementById("inputIntensidade").value : ""
+    };
+
+    const perfumes = await loadCSV();
+    const melhorPerfume = calcularSimilaridade(perfumes, respostas);
+
+    // Remover "100ML", "50ML" ou qualquer outro tamanho com "ML" do nome
+    const nomeSemML = melhorPerfume.Perfume.replace(/\s?\d+ML$/, '').trim();
+
+    document.getElementById('textDivFim').innerHTML = nomeSemML;
+
+    avancar();
+}
+
 function onMove(e) {
     if (!dragging)
         return;
@@ -104,6 +232,9 @@ function onMove(e) {
     // Aplicar posição e atualizar valor
     thumb.style.left = `${(age / 100) * 100}%`;
     thumb.textContent = age;
+
+    // **Atualizar o valor do input escondido**
+    document.getElementById("inputFaixaEtaria").value = age;
 }
 
 thumb.addEventListener("mousedown", (e) => {
@@ -124,3 +255,15 @@ thumb.addEventListener("touchstart", (e) => {
         document.removeEventListener("touchmove", onMove);
     });
 });
+
+function msg(tipo, titulo, descricao) {
+    Swal.fire({
+        title: titulo || "Atenção",
+        text: descricao || "Algo aconteceu!",
+        icon: tipo === "S" ? "success" : "error",
+        confirmButtonText: "OK",
+        timer: 3000, // Fecha automaticamente após 3 segundos
+        showCancelButton: false,
+        allowOutsideClick: false
+    });
+}
