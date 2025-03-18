@@ -211,8 +211,12 @@ function calcularSimilaridade(perfumes, respostas) {
         if (faixaEtariaCSV.includes("-")) {
             let [min, max] = faixaEtariaCSV.split('-').map(num => parseInt(num.trim()));
             if (idadeUsuario >= min && idadeUsuario <= max) pontuacao++;
-        } else if (faixaEtariaCSV === respostas.faixaEtaria) {
-            pontuacao++;
+        } else {
+            // Comparar a faixa etária como número
+            let faixaEtariaCSVNumero = parseInt(faixaEtariaCSV);
+            if (faixaEtariaCSVNumero === idadeUsuario) {
+                pontuacao++;
+            }
         }
 
         // Verifica se a pontuação do perfume atual é maior que a anterior
@@ -225,10 +229,49 @@ function calcularSimilaridade(perfumes, respostas) {
     return melhorPerfume;
 }
 
+// Função para preencher valores vazios com base nos dados do CSV
+function preencherCampos(respostas) {
+    // Garantir que os valores sejam minúsculos para evitar problemas de comparação
+    respostas.sentimento = respostas.sentimento ? respostas.sentimento.toLowerCase() : "";
+    respostas.ocasião = respostas.ocasião ? respostas.ocasião.toLowerCase() : "";
+
+    if (!respostas.estilo) {
+        // Definir estilo baseado no sentimento
+        const mapeamentoEstilo = {
+            "confiança": "Moderno",
+            "poder": "Sofisticado",
+            "respeito": "Clássico",
+            "conhecimento": "Intelectual"
+        };
+        respostas.estilo = mapeamentoEstilo[respostas.sentimento] || "Casual";
+    }
+
+    if (!respostas.intensidade) {
+        // Definir intensidade baseada na ocasião
+        const mapeamentoIntensidade = {
+            "festa": "Forte",
+            "trabalho": "Moderada",
+            "jantar": "Moderada",
+            "dia a dia": "Leve",
+            "praia": "Leve",
+            "aniversário": "Forte",
+            "ocasião especial": "Forte"
+        };
+        respostas.intensidade = mapeamentoIntensidade[respostas.ocasião] || "Moderada";
+    }
+
+    if (!respostas.faixaEtaria) {
+        // Definir uma faixa etária média baseada nos dados do CSV
+        respostas.faixaEtaria = "23-35"; // Ajuste conforme necessário
+    }
+
+    return respostas;
+}
+
 // Função para recomendar o perfume com base nas respostas do usuário
 async function recomendar() {
     // Obter as respostas dos inputs
-    const respostas = {
+    let respostas = {
         ocasião: document.getElementById("inputOcasião") ? document.getElementById("inputOcasião").value : "",
         periodo: document.getElementById("inputPeriodo") ? document.getElementById("inputPeriodo").value : "",
         clima: document.getElementById("inputClima") ? document.getElementById("inputClima").value : "",
@@ -239,16 +282,19 @@ async function recomendar() {
         intensidade: document.getElementById("inputIntensidade") ? document.getElementById("inputIntensidade").value : ""
     };
 
+    // Preencher campos vazios
+    respostas = preencherCampos(respostas);
+
     console.log(respostas); // Pode ser útil para depuração
 
     // Carregar os perfumes do CSV
     const perfumes = await loadCSV();
-    
+
     // Calcular o melhor perfume com base nas respostas
     const melhorPerfume = calcularSimilaridade(perfumes, respostas);
 
     if (melhorPerfume) {
-        // Remover "100ML", "50ML" ou qualquer outro tamanho com "ML" do nome
+        // Remover "100ML", "50ML" ou qualquer outro tamanho com "ML" do nome utilizando regex
         const nomeSemML = melhorPerfume.Perfume.replace(/\s?\d+ML$/, '').trim();
 
         // Exibir o nome do melhor perfume na interface
@@ -261,6 +307,7 @@ async function recomendar() {
         document.getElementById('textDivFim').innerHTML = "Nenhum perfume encontrado com essas características.";
     }
 }
+
 
 function onMove(e) {
     if (!dragging)
