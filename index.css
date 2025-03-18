@@ -414,7 +414,7 @@ button:active {
     padding: 5px;
 }
 
-#inputIdade, #inputSentimentoSel {
+#inputIdade, #inputSentimentoSel, #inputEmail, #inputWhatsapp, #inputPerf{
     font-size: 16px;
     color: #fff;
 
@@ -655,7 +655,7 @@ button:active {
         width: 40px;
     }
 
-    #inputIdade, #inputSentimentoSel {
+    #inputIdade, #inputSentimentoSel, #inputEmail, #inputWhatsapp, #inputPerf {
         width: 130px;
     }
 

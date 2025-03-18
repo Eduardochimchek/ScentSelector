@@ -37,6 +37,19 @@ document.querySelector('.buttonWhatsapp').addEventListener('click', () => {
 
 document.querySelector('#buttonNovamente').addEventListener('click', function (){
     indiceAtual = 0; // Reinicia o índice para a primeira tela
+    document.getElementById("inputFaixaEtaria").value = "";
+    document.getElementById("inputOcasião").value = "";
+    document.getElementById("inputPeriodo").value = "";
+    document.getElementById("inputClima").value = "";
+    document.getElementById("inputSexo").value = "";
+    document.getElementById("inputSentimento").value = "";
+
+    vage = 0;
+    thumb.style.left = '0%';
+    thumb.textContent = vage;  // Mostrar 0 como valor
+    slider.value = 0; // Se estiver usando um slider de input HTML
+    
+    document.querySelectorAll(".opcSENT").forEach(item => item.classList.remove("selected"));
     atualizarTela(); // Atualiza a interface para exibir a primeira tela
 });
 
@@ -129,17 +142,17 @@ function selecionarIdade() {
     document.getElementById("inputIdade").value // input se for mobile
 
     if(vage != 999){
-        if(parseInt(document.getElementById("inputIdade").value) < 5){
+        if(vage < 5){
             msg("E", "Erro!", "Por favor, selecione uma faixa etária válida.");
             return;
         }else{
-            document.getElementById("inputFaixaEtaria").value =  document.getElementById("inputIdade").value;
+            document.getElementById("inputFaixaEtaria").value = vage;
         }
     }else if(faixaEtaria < 5){
         msg("E", "Erro!", "Por favor, selecione uma faixa etária válida.");
         return;
     }else{
-        document.getElementById("inputFaixaEtaria").value =  vage;
+        document.getElementById("inputFaixaEtaria").value = faixaEtaria;
     }
     
     avancar();
@@ -211,6 +224,8 @@ async function recomendar() {
         faixaEtaria: document.getElementById("inputFaixaEtaria") ? document.getElementById("inputFaixaEtaria").value : "",
         intensidade: document.getElementById("inputIntensidade") ? document.getElementById("inputIntensidade").value : ""
     };
+
+    console.log(respostas);
 
     const perfumes = await loadCSV();
     const melhorPerfume = calcularSimilaridade(perfumes, respostas);
