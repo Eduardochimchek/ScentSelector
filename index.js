@@ -165,19 +165,20 @@ function openWhatsApp() {
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
 }
 
+// Função para carregar o CSV e processá-lo com o PapaParse
 async function loadCSV() {
     const response = await fetch('./model/perfumesAll.csv');
     const csvText = await response.text();
     return new Promise(resolve => {
         Papa.parse(csvText, {
-            header: true,
-            skipEmptyLines: true,
+            header: true, // Cabeçalhos de coluna no CSV
+            skipEmptyLines: true, // Ignora linhas vazias
             complete: results => {
                 const perfumes = results.data.map(perfume => {
                     let novoObjeto = {};
                     Object.keys(perfume).forEach(chave => {
-                        let chaveLimpa = chave.trim();
-                        novoObjeto[chaveLimpa] = perfume[chave].trim();
+                        let chaveLimpa = chave.trim(); // Remove espaços nos nomes das chaves
+                        novoObjeto[chaveLimpa] = perfume[chave].trim(); // Remove espaços nos valores
                     });
                     return novoObjeto;
                 });
@@ -187,33 +188,48 @@ async function loadCSV() {
     });
 }
 
+// Função para calcular a similaridade entre os perfumes e as respostas do usuário
 function calcularSimilaridade(perfumes, respostas) {
     let melhorPerfume = null;
     let maiorPontuacao = -1;
+    
+    // Função para normalizar texto (remover espaços e transformar em minúsculas)
+    const normalizarTexto = texto => texto ? texto.trim().toLowerCase() : "";
+    
     perfumes.forEach(perfume => {
         let pontuacao = 0;
-        const normalizarTexto = texto => texto ? texto.trim().toLowerCase() : "";
-        
+
+        // Comparar os campos de cada perfume com as respostas
         ["Ocasião de Uso", "Período de Uso", "Clima", "Sexo", "Sentimento", "Estilo", "Intensidade"].forEach(campo => {
-            if (normalizarTexto(perfume[campo]) === normalizarTexto(respostas[campo.toLowerCase()])) pontuacao++;
+            if (normalizarTexto(perfume[campo]).includes(normalizarTexto(respostas[campo.toLowerCase()]))) {
+                pontuacao++;
+            }
         });
-        
+
+        // Validar faixa etária
         let faixaEtariaCSV = normalizarTexto(perfume['Faixa Etária']);
         let idadeUsuario = parseInt(respostas.faixaEtaria);
+
         if (faixaEtariaCSV.includes("-")) {
             let [min, max] = faixaEtariaCSV.split('-').map(num => parseInt(num.trim()));
             if (idadeUsuario >= min && idadeUsuario <= max) pontuacao++;
-        } else if (faixaEtariaCSV === respostas.faixaEtaria) pontuacao++;
-        
+        } else if (faixaEtariaCSV === respostas.faixaEtaria) {
+            pontuacao++;
+        }
+
+        // Verifica se a pontuação do perfume atual é maior que a anterior
         if (pontuacao > maiorPontuacao) {
             maiorPontuacao = pontuacao;
             melhorPerfume = perfume;
         }
     });
+
     return melhorPerfume;
 }
 
+// Função para recomendar o perfume com base nas respostas do usuário
 async function recomendar() {
+    // Obter as respostas dos inputs
     const respostas = {
         ocasião: document.getElementById("inputOcasião") ? document.getElementById("inputOcasião").value : "",
         periodo: document.getElementById("inputPeriodo") ? document.getElementById("inputPeriodo").value : "",
@@ -225,17 +241,27 @@ async function recomendar() {
         intensidade: document.getElementById("inputIntensidade") ? document.getElementById("inputIntensidade").value : ""
     };
 
-    console.log(respostas);
+    console.log(respostas); // Pode ser útil para depuração
 
+    // Carregar os perfumes do CSV
     const perfumes = await loadCSV();
+    
+    // Calcular o melhor perfume com base nas respostas
     const melhorPerfume = calcularSimilaridade(perfumes, respostas);
 
-    // Remover "100ML", "50ML" ou qualquer outro tamanho com "ML" do nome
-    const nomeSemML = melhorPerfume.Perfume.replace(/\s?\d+ML$/, '').trim();
+    if (melhorPerfume) {
+        // Remover "100ML", "50ML" ou qualquer outro tamanho com "ML" do nome
+        const nomeSemML = melhorPerfume.Perfume.replace(/\s?\d+ML$/, '').trim();
 
-    document.getElementById('textDivFim').innerHTML = nomeSemML;
+        // Exibir o nome do melhor perfume na interface
+        document.getElementById('textDivFim').innerHTML = nomeSemML;
 
-    avancar();
+        // Chamar a função para avançar, se necessário
+        avancar();
+    } else {
+        // Caso não encontre um perfume adequado
+        document.getElementById('textDivFim').innerHTML = "Nenhum perfume encontrado com essas características.";
+    }
 }
 
 function onMove(e) {
