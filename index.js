@@ -137,9 +137,7 @@ function selecionarOcasiao(valor) {
 }
 
 function selecionarIdade() {
-    let faixaEtaria = parseInt(document.getElementById("inputFaixaEtaria").value) || 0;  
-
-    document.getElementById("inputIdade").value // input se for mobile
+    let faixaEtaria = parseInt(document.getElementById("inputIdade").value) || 0;  
 
     if(vage != 999){
         if(vage < 5){
