@@ -2,6 +2,8 @@ const telas = document.querySelectorAll('.tela');
 const thumb = document.getElementById("thumb");
 const slider = document.getElementById("slider");
 
+var vage = 999;
+
 let dragging = false;
 let indiceAtual = 0;
 
@@ -124,11 +126,22 @@ function selecionarOcasiao(valor) {
 function selecionarIdade() {
     let faixaEtaria = parseInt(document.getElementById("inputFaixaEtaria").value) || 0;  
 
-    if (faixaEtaria < 5) {
+    document.getElementById("inputIdade").value // input se for mobile
+
+    if(vage != 999){
+        if(parseInt(document.getElementById("inputIdade").value) < 5){
+            msg("E", "Erro!", "Por favor, selecione uma faixa etária válida.");
+            return;
+        }else{
+            document.getElementById("inputFaixaEtaria").value =  document.getElementById("inputIdade").value;
+        }
+    }else if(faixaEtaria < 5){
         msg("E", "Erro!", "Por favor, selecione uma faixa etária válida.");
         return;
+    }else{
+        document.getElementById("inputFaixaEtaria").value =  vage;
     }
-
+    
     avancar();
 }
 
@@ -233,8 +246,7 @@ function onMove(e) {
     thumb.style.left = `${(age / 100) * 100}%`;
     thumb.textContent = age;
 
-    // **Atualizar o valor do input escondido**
-    document.getElementById("inputFaixaEtaria").value = age;
+    vage = age;
 }
 
 thumb.addEventListener("mousedown", (e) => {
