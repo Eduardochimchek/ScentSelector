@@ -46,9 +46,8 @@ document.querySelector('#buttonNovamente').addEventListener('click', function ()
     document.getElementById("inputIdade").value = "";
     vage = 999;
 
-    vage = 0;
     thumb.style.left = '0%';
-    thumb.textContent = vage;  // Mostrar 0 como valor
+    thumb.textContent = 0;  // Mostrar 0 como valor
     slider.value = 0; // Se estiver usando um slider de input HTML
     
     document.querySelectorAll(".opcSENT").forEach(item => item.classList.remove("selected"));
