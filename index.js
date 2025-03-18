@@ -159,7 +159,7 @@ function selecionarIdade() {
 function openWhatsApp() {
     var phoneNumber = "556692479111";
     var resultado = document.getElementById('textDivFim').innerHTML;
-    var message = `Olá, fiz o quiz e meu resultado foi:  ${resultado}`;
+    var message = `Olá, realizei o quiz e meu resultado como perfume mais ideal para mim foi:  ${resultado} , estou interessado em saber mais sobre!`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
 }
 
